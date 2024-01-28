@@ -24,7 +24,7 @@ export default function App() {
       </head>
       <body>
         <Header />
-        <div className="max-w-[1280px] mx-auto">
+        <div className="max-w-[1280px] mx-auto px-5 xl:px-0">
           <Outlet />
         </div>
         <ScrollRestoration />

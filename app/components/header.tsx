@@ -1,24 +1,50 @@
-import { Link } from "@remix-run/react";
+import { Link, useLocation } from "@remix-run/react";
 import { Laptop } from "lucide-react";
 import { Button } from "./ui/Button";
 import { Menu, MenuItem, MenuSeparator } from "./ui/Menu";
 import { MenuTrigger } from "react-aria-components";
+import { twMerge } from "tailwind-merge";
 
 export default function Header() {
+  const links = [
+    { href: "/blog", text: "Blog" },
+    { href: "/projects", text: "Projects" },
+    { href: "/about", text: "About me" },
+    { href: "/contact", text: "Contact me" },
+  ];
+
+  const location = useLocation();
+  const path = location.pathname.split("/")[1];
+
   return (
     <header className="mx-auto px-5 py-9 lg:py-12 max-w-[1535px] flex justify-between items-center w-full">
-      <h2 className="text-2xl font-bold">nahuel.luca()</h2>
+      <Link to={"/"} className="text-2xl font-bold">
+        nahuel.luca()
+      </Link>
       <nav>
-        <ul className="flex space-x-8 font-semibold">
-          <li>
-            <Link to="/blog">Blog</Link>
-          </li>
-          <li>
-            <Link to="#">Projects</Link>
-          </li>
-          <li>
-            <Link to="#">About me</Link>
-          </li>
+        <ul className="flex space-x-8 font-semibold text-xl">
+          {links.map((link) => (
+            <li className="relative group" key={`link-${link.text}`}>
+              <Link
+                to={link.href}
+                className={twMerge(
+                  "block pb-1",
+                  link.href === `/${path}`
+                    ? "text-blue-400"
+                    : "hover:text-blue-400"
+                )}
+              >
+                {link.text}
+              </Link>
+              <div
+                className={twMerge(
+                  link.href === `/${path}`
+                    ? "w-full h-[1.5px] bg-blue-400"
+                    : "absolute bottom-0 left-0 w-full h-[1.5px] bg-blue-400 transform scale-x-0 origin-left transition-transform group-hover:scale-x-100"
+                )}
+              ></div>
+            </li>
+          ))}
         </ul>
       </nav>
       <MenuTrigger>
