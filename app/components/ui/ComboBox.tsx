@@ -15,7 +15,7 @@ import { composeTailwindRenderProps } from "./utils";
 
 export interface ComboBoxProps<T extends object>
   extends Omit<AriaComboBoxProps<T>, "children"> {
-  label?: string;
+  label?: string | React.ReactNode;
   description?: string | null;
   errorMessage?: string | ((validation: ValidationResult) => string);
   children: React.ReactNode | ((item: T) => React.ReactNode);

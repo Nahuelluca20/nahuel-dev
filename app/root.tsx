@@ -9,6 +9,7 @@ import {
 } from "@remix-run/react";
 
 import styles from "./tailwind.css";
+import Header from "./components/header";
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
@@ -21,8 +22,11 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="max-w-[1300px] mx-auto px-20 mt-10">
-        <Outlet />
+      <body>
+        <Header />
+        <div className="max-w-[1280px] mx-auto">
+          <Outlet />
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
