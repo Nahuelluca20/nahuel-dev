@@ -12,12 +12,14 @@
     "pages:deploy": "npm run build && wrangler pages deploy ./public"
   },
   "dependencies": {
+    "@markdoc/markdoc": "^0.4.0",
     "@remix-run/cloudflare": "^2.5.1",
     "@remix-run/cloudflare-pages": "^2.5.1",
     "@remix-run/css-bundle": "^2.5.1",
     "@remix-run/react": "^2.5.1",
     "isbot": "^4.1.0",
     "lucide-react": "^0.316.0",
+    "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-aria-components": "^1.0.1",
     "react-dom": "^18.2.0",
@@ -28,6 +30,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240117.0",
     "@remix-run/dev": "^2.5.1",
+    "@types/prismjs": "^1.26.3",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
