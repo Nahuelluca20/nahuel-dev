@@ -1,19 +1,14 @@
 export const post = `
+
 # Remix prefetch: Get data early and cache it with PrefetchPageLinks
 This is a small guide to learn how to use \`data prefetching\` with remix and caching the data.
-
-{% tag %}
-Content
-{% /tag %}
 
 ## What application will we build?
 We will create a very very simple application using the Rick and Morty API to obtain the Morty character. And we will use Remix's \`PrefetchPageLinks\` component to obtain the data before the user clicks, performing a \`data prefetching\`.
 
 ## Let's go
 
-{% callout type="check" %}
 First of all, we will create our loader function that is responsible for requesting data from the API. We can do this function in the \`resource.ts\` file in the routes folder like this: \`app/routes/resource.ts\`
-{% /callout %}
 
 \`\`\`javascript
 import type { LoaderFunction } from "@remix-run/node";

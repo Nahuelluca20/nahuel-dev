@@ -3,7 +3,6 @@ import type { RenderableTreeNodes } from "@markdoc/markdoc";
 import { renderers } from "@markdoc/markdoc";
 import * as React from "react";
 import prism from "prismjs";
-// import Prism from "prismjs";
 
 type Props = {
   content: RenderableTreeNodes;
@@ -23,9 +22,15 @@ export function Fence({
   );
 }
 
+function Callout({ children }: { children: React.ReactNode }) {
+  return <div className="callout">{children}</div>;
+}
+
 export function MarkdownView({ content }: Props) {
   React.useEffect(() => {
     prism.highlightAll();
   });
-  return <>{renderers.react(content, React, { components: { Fence } })}</>;
+  return (
+    <>{renderers.react(content, React, { components: { Fence, Callout } })}</>
+  );
 }

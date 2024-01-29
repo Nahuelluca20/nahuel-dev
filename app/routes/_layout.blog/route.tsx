@@ -1,5 +1,5 @@
 // import { LoaderFunctionArgs } from "@remix-run/cloudflare";
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import { MarkdownView } from "~/components/markdown";
 import { markdownParser } from "~/utils/md.server";
 import styles from "./prismjs.css";
@@ -17,7 +17,8 @@ export default function Blog() {
   const { content } = useLoaderData<typeof loader>();
 
   return (
-    <div className="min-w-[900px] mx-auto prose prose-sm sm:prose lg:prose-lg xl:prose-xl">
+    <div className="lg:min-w-[900px] mx-auto prose prose-sm sm:prose lg:prose-lg">
+      <Link to={"/blog/city"}>GOLA</Link>
       <MarkdownView content={content} />
     </div>
   );

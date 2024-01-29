@@ -17,7 +17,7 @@ export default function Header() {
   const path = location.pathname.split("/")[1];
 
   return (
-    <header className="mx-auto px-5 py-9 lg:py-12 max-w-[1535px] flex justify-between items-center w-full">
+    <header className="abosolute left-0 top-0 mx-auto px-5 py-9 lg:px-36 lg:py-12 max-w- flex justify-between items-center w-screen overflow-x-hidden">
       <Link to={"/"} className="text-2xl font-bold">
         nahuel.luca()
       </Link>

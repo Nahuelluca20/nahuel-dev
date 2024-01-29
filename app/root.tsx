@@ -15,16 +15,16 @@ export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
 export default function App() {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="overflow-x-hidden">
         <Header />
-        <div className="max-w-[1280px] mx-auto px-5 xl:px-0">
+        <div className="max-w-[1280px] mx-auto mt-10 px-5 xl:px-0">
           <Outlet />
         </div>
         <ScrollRestoration />
