@@ -1,7 +1,7 @@
 import { Link, useLocation } from "@remix-run/react";
 import { Laptop } from "lucide-react";
 import { Button } from "./ui/Button";
-import { Menu, MenuItem, MenuSeparator } from "./ui/Menu";
+import { Menu, MenuItem } from "./ui/Menu";
 import { MenuTrigger } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
@@ -58,10 +58,8 @@ export default function Header() {
           onSelectionChange={function Ya() {}}
           placement="bottom right"
         >
-          <MenuItem id="new">Dark</MenuItem>
-          <MenuItem id="open">Light</MenuItem>
-          <MenuSeparator />
-          <MenuItem id="save">System</MenuItem>
+          <MenuItem id="dark">Dark</MenuItem>
+          <MenuItem id="light">Light</MenuItem>
         </Menu>
       </MenuTrigger>
     </header>
