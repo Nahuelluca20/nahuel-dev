@@ -1,4 +1,4 @@
-import Markdoc, { transform, type RenderableTreeNodes } from "@markdoc/markdoc";
+import Markdoc, { type RenderableTreeNodes } from "@markdoc/markdoc";
 
 const fence = {
   render: "Fence",
@@ -10,5 +10,5 @@ const fence = {
 };
 
 export function markdownParser(markdown: string): RenderableTreeNodes {
-  return transform(Markdoc.parse(markdown), { nodes: { fence } });
+  return Markdoc.transform(Markdoc.parse(markdown), { nodes: { fence } });
 }

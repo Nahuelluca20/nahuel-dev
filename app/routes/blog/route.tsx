@@ -17,7 +17,7 @@ export default function Blog() {
   const { content } = useLoaderData<typeof loader>();
 
   return (
-    <div className="max-w-[750px] mx-auto">
+    <div className="min-w-[900px] mx-auto prose prose-sm sm:prose lg:prose-lg xl:prose-xl">
       <MarkdownView content={content} />
     </div>
   );

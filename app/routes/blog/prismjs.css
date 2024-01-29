@@ -1,44 +1,24 @@
 /* PrismJS 1.29.0
 https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+jsx+tsx+typescript */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  margin: 0;
-}
-
 article > p {
-  margin: 24px 0;
   @apply text-black dark:text-[#d1d5db];
-  font-size: 18px;
+}
+
+p > code {
+  @apply text-black dark:text-[#d1d5db];
 }
 
 article > h1 {
   font-size: 48px;
   @apply text-black dark:text-white;
-  font-weight: 800;
 }
 
 article > h2 {
-  /* margin: 1.5em 0; */
-  font-size: 32px;
-  font-weight: 600;
-  margin: 56px 0;
-  color: #000;
   @apply text-black dark:text-white;
 }
 
 article > h3 {
-  /* margin: 1.5em 0; */
-  font-size: 18px;
-  margin: 56px 0;
   @apply text-black dark:text-white;
 }
 
@@ -46,17 +26,15 @@ article > a {
   color: rgba(75, 85, 99, 1);
 }
 
-article > blockquote {
-  border-left: 4px solid rgba(75, 85, 99, 1);
-  padding-left: 1em;
-  margin-left: 0;
+blockquote {
+  @apply text-black dark:text-white;
 }
 
 code[class*="language-"],
 pre[class*="language-"] {
-  color: #000;
+  @apply text-[#000] dark:text-[#fff];
   background: 0 0;
-  text-shadow: 0 1px #fff;
+  /* text-shadow: 0 1px #fff; */
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   font-size: 1em;
   text-align: left;
@@ -73,7 +51,6 @@ pre[class*="language-"] {
   -ms-hyphens: none;
   hyphens: none;
 }
-
 code[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection,
 pre[class*="language-"] ::-moz-selection,
@@ -101,8 +78,7 @@ pre[class*="language-"] {
 }
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #f5f2f0;
-  @apply dark:bg-[#040405];
+  @apply bg-[#f5f2f0] dark:bg-[#040405];
 }
 :not(pre) > code[class*="language-"] {
   padding: 0.1em;
@@ -144,8 +120,7 @@ pre[class*="language-"] {
 .token.operator,
 .token.url {
   color: #9a6e3a;
-  background: hsla(0, 0%, 100%, 0.5);
-  @apply dark:bg-transparent;
+  @apply bg-transparent;
 }
 .token.atrule,
 .token.attr-value,
