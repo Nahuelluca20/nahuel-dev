@@ -2,7 +2,7 @@
 https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+jsx+tsx+typescript */
 
 article > p {
-  @apply text-black dark:text-[#d1d5db];
+  @apply text-[#535661] dark:text-[#a9adc1] font-medium;
 }
 
 p > code {
@@ -23,11 +23,19 @@ article > h3 {
 }
 
 article > a {
-  color: rgba(75, 85, 99, 1);
+  color: #36a3ff!;
+}
+
+article > p > a {
+  color: #36a3ff!;
 }
 
 blockquote {
   @apply text-black dark:text-white;
+}
+
+.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  @apply text-[#36a3ff];
 }
 
 code[class*="language-"],

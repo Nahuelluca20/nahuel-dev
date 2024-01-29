@@ -21,7 +21,7 @@ export default function Header() {
       <Link to={"/"} className="text-2xl font-bold">
         nahuel.luca()
       </Link>
-      <nav>
+      <nav className="hidden md:flex">
         <ul className="flex space-x-8 font-semibold text-xl">
           {links.map((link) => (
             <li className="relative group" key={`link-${link.text}`}>
