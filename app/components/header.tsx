@@ -4,8 +4,11 @@ import { Button } from "./ui/Button";
 import { Menu, MenuItem } from "./ui/Menu";
 import { MenuTrigger } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
+import { Theme, useTheme } from "~/utils/theme-provider";
 
 export default function Header() {
+  const [theme, setTheme] = useTheme();
+
   const links = [
     { href: "/blog", text: "Blog" },
     { href: "/projects", text: "Projects" },
@@ -52,7 +55,21 @@ export default function Header() {
           <Laptop className="w-5 h-5" />
         </Button>
         <Menu
-          onAction={function Ya() {}}
+          onAction={() => {
+            setTheme((prevTheme) =>
+              prevTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
+            );
+            if (theme === Theme.DARK) {
+              document
+                .querySelector("html")
+                ?.style.setProperty("color-scheme", "light");
+            } else {
+              document
+                .querySelector("html")
+                ?.style.setProperty("color-scheme", "dark");
+            }
+          }}
+          disabledKeys={theme === Theme.LIGHT ? ["light"] : ["dark"]}
           onClose={function Ya() {}}
           onScroll={function Ya() {}}
           onSelectionChange={function Ya() {}}
