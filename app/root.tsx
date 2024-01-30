@@ -1,23 +1,53 @@
-import type { LinksFunction } from "@remix-run/cloudflare";
+import type { LinksFunction, LoaderFunction } from "@remix-run/cloudflare";
 import {
+  ClientLoaderFunctionArgs,
   Links,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 import { twMerge } from "tailwind-merge";
 
 import styles from "./tailwind.css";
 import Header from "./components/header";
-import { ThemeProvider, useTheme } from "./utils/theme-provider";
+import { Theme, ThemeProvider, useTheme } from "./utils/theme-provider";
+import { getThemeSession } from "./utils/theme.server";
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
+export type LoaderData = {
+  theme: Theme | null;
+};
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const themeSession = await getThemeSession(request);
+
+  const data: LoaderData = {
+    theme: themeSession.getTheme(),
+  };
+
+  return data;
+};
+
+export const clientLoader = async ({
+  serverLoader,
+}: ClientLoaderFunctionArgs) => {
+  // call the server loader
+  const serverData: { theme: string } = await serverLoader();
+  if (serverData.theme === Theme.LIGHT) {
+    document.querySelector("html")?.style.setProperty("color-scheme", "light");
+  } else {
+    document.querySelector("html")?.style.setProperty("color-scheme", "dark");
+  }
+
+  return serverData;
+};
+
 function App() {
   const [theme] = useTheme();
-
   return (
     <html lang="en" className={twMerge(theme)}>
       <head>
@@ -40,8 +70,10 @@ function App() {
 }
 
 export default function AppWithProviders() {
+  const data = useLoaderData<LoaderData>();
+
   return (
-    <ThemeProvider>
+    <ThemeProvider specifiedTheme={data.theme}>
       <App />
     </ThemeProvider>
   );

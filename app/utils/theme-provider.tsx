@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import { useFetcher } from "@remix-run/react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 
 enum Theme {
@@ -6,12 +7,54 @@ enum Theme {
   LIGHT = "light",
 }
 
-type ThemeContextType = [Theme | null, Dispatch<SetStateAction<Theme | null>>];
+type ThemeContextType = [
+  Theme | null | undefined,
+  Dispatch<SetStateAction<Theme | null>>
+];
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme | null>(Theme.LIGHT);
+function ThemeProvider({
+  children,
+  specifiedTheme,
+}: {
+  children: ReactNode;
+  specifiedTheme: Theme | null;
+}) {
+  const [theme, setTheme] = useState<Theme | null>(() => {
+    if (specifiedTheme) {
+      if (themes.includes(specifiedTheme)) {
+        return specifiedTheme;
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  });
+  const persistTheme = useFetcher();
+
+  const persistThemeRef = useRef(persistTheme);
+  useEffect(() => {
+    persistThemeRef.current = persistTheme;
+  }, [persistTheme]);
+
+  const mountRun = useRef(false);
+
+  useEffect(() => {
+    if (!mountRun.current) {
+      mountRun.current = true;
+      return;
+    }
+    if (!theme) {
+      return;
+    }
+
+    persistThemeRef.current.submit(
+      { theme },
+      { action: "/set-theme", method: "post" }
+    );
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={[theme, setTheme]}>
@@ -28,4 +71,10 @@ function useTheme() {
   return context;
 }
 
-export { Theme, ThemeProvider, useTheme };
+const themes: Array<Theme> = Object.values(Theme);
+
+function isTheme(value: unknown): value is Theme {
+  return typeof value === "string" && themes.includes(value as Theme);
+}
+
+export { isTheme, Theme, ThemeProvider, useTheme };
