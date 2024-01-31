@@ -33,6 +33,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 function App() {
   const [theme] = useTheme();
+
   return (
     <html lang="en" className={twMerge(theme)}>
       <head>
@@ -56,7 +57,6 @@ function App() {
 
 export default function AppWithProviders() {
   const data = useLoaderData<LoaderData>();
-
   return (
     <ThemeProvider specifiedTheme={data.theme}>
       <App />

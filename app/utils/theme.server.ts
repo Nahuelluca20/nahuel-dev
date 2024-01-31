@@ -1,20 +1,11 @@
 import { createCookieSessionStorage } from "@remix-run/cloudflare";
 import { Theme, isTheme } from "./theme-provider";
 
-// export const loader = async ({ context }: LoaderFunctionArgs) => {
-//   console.log(context.env.SESSION_SECRET);
-// };
-
-const sessionSecret = "dsaedasdsa";
-if (!sessionSecret) {
-  throw new Error("SESSION_SECRET must be set");
-}
-
 const themeStorage = createCookieSessionStorage({
   cookie: {
     name: "my_remix_theme",
     secure: true,
-    secrets: [sessionSecret],
+    secrets: ["s3cret1-th3me-cook13"],
     sameSite: "lax",
     path: "/",
     httpOnly: true,

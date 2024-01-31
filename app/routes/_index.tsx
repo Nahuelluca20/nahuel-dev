@@ -26,6 +26,7 @@ export default function Index() {
         onFocusChange={function Ya() {}}
         onInputChange={function Ya() {}}
         onKeyDown={function Ya() {}}
+        allowsCustomValue={false}
         onKeyUp={function Ya() {}}
         onOpenChange={function Ya() {}}
         onSelectionChange={function Ya() {}}

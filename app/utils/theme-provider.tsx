@@ -8,8 +8,8 @@ enum Theme {
 }
 
 type ThemeContextType = [
-  Theme | null | undefined,
-  Dispatch<SetStateAction<Theme | null>>
+  Theme | null | undefined | string,
+  Dispatch<SetStateAction<Theme | null | string>>
 ];
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -21,7 +21,7 @@ function ThemeProvider({
   children: ReactNode;
   specifiedTheme: Theme | null;
 }) {
-  const [theme, setTheme] = useState<Theme | null>(() => {
+  const [theme, setTheme] = useState<Theme | null | string>(() => {
     if (specifiedTheme) {
       if (themes.includes(specifiedTheme)) {
         return specifiedTheme;
@@ -29,7 +29,7 @@ function ThemeProvider({
         return null;
       }
     } else {
-      return null;
+      return "light";
     }
   });
   const persistTheme = useFetcher();

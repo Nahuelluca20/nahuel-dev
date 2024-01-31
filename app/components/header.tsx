@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@remix-run/react";
-import { Laptop } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { Button } from "./ui/Button";
 import { Menu, MenuItem } from "./ui/Menu";
 import { MenuTrigger } from "react-aria-components";
@@ -52,7 +52,11 @@ export default function Header() {
       </nav>
       <MenuTrigger>
         <Button className="px-2" variant="secondary">
-          <Laptop className="w-5 h-5" />
+          {Theme.DARK === theme ? (
+            <Moon className="w-5 h-5" />
+          ) : (
+            <Sun className="w-5 h-5" />
+          )}
         </Button>
         <Menu
           onAction={() => {

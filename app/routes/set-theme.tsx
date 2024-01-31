@@ -5,7 +5,7 @@ import type {
   LoaderFunctionArgs,
 } from "@remix-run/cloudflare";
 import { isTheme } from "~/utils/theme-provider";
-import { getThemeSession } from "~/utils/theme.server";
+import { getThemeSession } from "../utils/theme.server";
 
 export const action: ActionFunction = async ({
   request,
