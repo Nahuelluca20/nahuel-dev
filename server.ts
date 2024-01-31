@@ -23,6 +23,6 @@ export const onRequest = createPagesFunctionHandler({
     const env = AppEnvSchema.parse(context.env);
     return { env };
   },
-  // mode: build.mode,
-  mode: process.env.NODE_ENV,
+  mode: build.mode,
+  // mode: process.env.NODE_ENV,
 });
