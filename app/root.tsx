@@ -1,6 +1,5 @@
 import type { LinksFunction, LoaderFunction } from "@remix-run/cloudflare";
 import {
-  ClientLoaderFunctionArgs,
   Links,
   LiveReload,
   Meta,
@@ -30,20 +29,6 @@ export const loader: LoaderFunction = async ({ request }) => {
   };
 
   return data;
-};
-
-export const clientLoader = async ({
-  serverLoader,
-}: ClientLoaderFunctionArgs) => {
-  // call the server loader
-  const serverData: { theme: string } = await serverLoader();
-  if (serverData.theme === Theme.LIGHT) {
-    document.querySelector("html")?.style.setProperty("color-scheme", "light");
-  } else {
-    document.querySelector("html")?.style.setProperty("color-scheme", "dark");
-  }
-
-  return serverData;
 };
 
 function App() {

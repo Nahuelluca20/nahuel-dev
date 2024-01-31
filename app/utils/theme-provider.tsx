@@ -36,6 +36,14 @@ function ThemeProvider({
 
   const persistThemeRef = useRef(persistTheme);
   useEffect(() => {
+    if (theme === Theme.LIGHT) {
+      document
+        .querySelector("html")
+        ?.style.setProperty("color-scheme", "light");
+    } else {
+      document.querySelector("html")?.style.setProperty("color-scheme", "dark");
+    }
+
     persistThemeRef.current = persistTheme;
   }, [persistTheme]);
 

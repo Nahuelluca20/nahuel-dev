@@ -2,7 +2,7 @@ import MePNG from "public/me.png";
 
 export default function About() {
   return (
-    <div>
+    <div className="pb-10">
       <h1 className="text-2xl mb-5 font-bold max-w-[900px] mx-auto">About</h1>
       <div className="space-y-5 text-lg font-medium leading-7 max-w-[900px] mx-auto">
         <div className="flex items-center">
@@ -20,7 +20,13 @@ export default function About() {
               development experience.
             </p>
           </span>
-          <img src={MePNG} alt="me" width={300} height={300} />
+          <img
+            className="hidden md:block"
+            src={MePNG}
+            alt="me"
+            width={300}
+            height={300}
+          />
         </div>
         <p>
           In my journey to build robust applications, I rely on Prisma for
