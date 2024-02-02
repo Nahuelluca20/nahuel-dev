@@ -28,7 +28,7 @@ export const loader: LoaderFunction = async ({ context }) => {
     })
     .from(post)
     .all();
-  const headers = { "Cache-Control": "some cache" };
+  const headers = { "Cache-Control": "public, max-age=60" };
   return json(results, { headers });
 };
 
