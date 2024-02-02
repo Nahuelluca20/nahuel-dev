@@ -44,7 +44,7 @@ function App() {
       </head>
       <body className="overflow-x-hidden dark:bg-[#1F2028]">
         <Header />
-        <div className="max-w-[1280px] mx-auto mt-10 px-5 xl:px-0">
+        <div className="xl:max-w-[1280px] mx-auto mt-10 px-5 xl:px-0">
           <Outlet />
         </div>
         <ScrollRestoration />

@@ -8,7 +8,6 @@ const fence = {
     },
   },
 };
-
 export function markdownParser(markdown: string): RenderableTreeNodes {
   return Markdoc.transform(Markdoc.parse(markdown), { nodes: { fence } });
 }
