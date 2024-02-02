@@ -1,22 +1,12 @@
 import { LoaderFunction, json } from "@remix-run/cloudflare";
 import { Link, useLoaderData } from "@remix-run/react";
 import { Link as LinkUI } from "~/components/ui/Link";
-import { drizzle } from "drizzle-orm/d1";
-import { post } from "~/db/schema";
 import { Env, Post } from "~/types";
+import { getAllBlogs } from "./queries";
 
 export const loader: LoaderFunction = async ({ context }) => {
   const env = context.env as Env;
-  const db = drizzle(env.BLOG_DB);
-  const results = await db
-    .select({
-      date: post.date,
-      id: post.id,
-      title: post.title,
-      tags: post.tags,
-    })
-    .from(post)
-    .all();
+  const results = await getAllBlogs(env.BLOG_DB);
   const headers = { "Cache-Control": "public, max-age=60" };
   return json(results, { headers });
 };

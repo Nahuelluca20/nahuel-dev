@@ -1,14 +1,12 @@
-import { LinksFunction, LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { LinksFunction, LoaderFunctionArgs, json } from "@remix-run/cloudflare";
 import { useLoaderData, useNavigate } from "@remix-run/react";
 
 import { MarkdownView } from "~/components/markdown";
 import { markdownParser } from "~/utils/md.server";
 import styles from "./prismjs.css";
 import { ArrowLeft } from "lucide-react";
-import { drizzle } from "drizzle-orm/d1";
 import { Env } from "~/types";
-import { post } from "~/db/schema";
-import { eq } from "drizzle-orm";
+import { getBlogPost } from "./queries";
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
@@ -16,22 +14,19 @@ export async function loader({ params, context }: LoaderFunctionArgs) {
   const slug = params.slug;
 
   const env = context.env as Env;
-  const db = drizzle(env.BLOG_DB);
-  const result: { content: string | null }[] = await db
-    .select({
-      content: post.content,
-    })
-    .from(post)
-    .where(eq(post.id, String(slug)))
-    .all();
+  const result: { content: string | null }[] = await getBlogPost(
+    env.BLOG_DB,
+    String(slug)
+  );
   console.log(result[0].content);
   const content =
     result[0].content && (await markdownParser(result[0].content));
-  return { content };
+  const headers = { "Cache-Control": "public, max-age=60" };
+  return json(content, { headers });
 }
 
 export default function BlogId() {
-  const { content } = useLoaderData<typeof loader>();
+  const content = useLoaderData<typeof loader>();
   const navigate = useNavigate();
   return (
     <div className="lg:min-w-[900px] mx-auto prose prose-sm sm:prose lg:prose-lg">
