@@ -14,6 +14,7 @@ import styles from "./tailwind.css";
 import Header from "./components/header";
 import { Theme, ThemeProvider, useTheme } from "./utils/theme-provider";
 import { getThemeSession } from "./utils/theme.server";
+import { useState } from "react";
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
@@ -33,6 +34,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 function App() {
   const [theme] = useTheme();
+  const [openMenu, setOpenMenu] = useState(false);
 
   return (
     <html lang="en" className={twMerge(theme)}>
@@ -42,8 +44,13 @@ function App() {
         <Meta />
         <Links />
       </head>
-      <body className="overflow-x-hidden dark:bg-[#1F2028]">
-        <Header />
+      <body
+        className={twMerge(
+          "overflow-x-hidden dark:bg-[#1F2028]  ",
+          openMenu ? "overflow-hidden max-h-screen" : "overflow-auto"
+        )}
+      >
+        <Header openMenu={openMenu} setOpenMenu={setOpenMenu} />
         <div className="max-w-[1280px] mx-auto mt-10 px-5 lg:px-[100px]">
           <Outlet />
         </div>

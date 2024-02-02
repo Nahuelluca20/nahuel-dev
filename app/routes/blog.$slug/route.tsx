@@ -31,7 +31,7 @@ export default function BlogId() {
   return (
     <div className="lg:min-w-[900px] mx-auto prose prose-sm sm:prose lg:prose-lg">
       <button
-        className="flex mb-10 dark:text-white items-center font-bold gap-2 transition-transform transform hover:-translate-x-1 focus:outline-none"
+        className="flex mb-10 dark:text-white items-center font-bold gap-2 z-0 transition-transform transform hover:-translate-x-1 focus:outline-none"
         onClick={() => {
           navigate(-1);
         }}
