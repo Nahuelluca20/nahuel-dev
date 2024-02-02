@@ -1,7 +1,5 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
-import { Button } from "~/components/ui/Button";
-import { ComboBox, ComboBoxItem } from "~/components/ui/ComboBox";
-
+import { Link } from "@remix-run/react";
 export const meta: MetaFunction = () => {
   return [
     { title: "New Remix App" },
@@ -11,31 +9,33 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div
-      data-mode="dark"
+    <section
+      className="grid items-center justify-center pt-20"
       style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}
     >
-      <h1>Welcome to Remixd dasds</h1>
-      <Button>CLICK ME</Button>
-      <ComboBox
-        disabledKeys={["mint"]}
-        className="max-w-[200px]"
-        label="Ice cream flavor"
-        onBlur={function Ya() {}}
-        onFocus={function Ya() {}}
-        onFocusChange={function Ya() {}}
-        onInputChange={function Ya() {}}
-        onKeyDown={function Ya() {}}
-        allowsCustomValue={false}
-        onKeyUp={function Ya() {}}
-        onOpenChange={function Ya() {}}
-        onSelectionChange={function Ya() {}}
-      >
-        <ComboBoxItem>Chocolate</ComboBoxItem>
-        <ComboBoxItem id="mint">Mint</ComboBoxItem>
-        <ComboBoxItem>Strawberry</ComboBoxItem>
-        <ComboBoxItem>Vanilla</ComboBoxItem>
-      </ComboBox>
-    </div>
+      <div className="space-y-2">
+        <h1 className="text-5xl max-w-[800px]">
+          Creating better web interfaces with excitement and enthusiasms
+        </h1>
+        <h2 className="text-xl text-[#535661] dark:text-[#a9adc1] font-medium">
+          Nahuel Luca - FrontEnd Developer
+        </h2>
+      </div>
+      <div className="flex gap-5 mt-10 text-lg font-semibold">
+        <Link
+          className="hover:ring-4 border-2 text-white dark:text-black bg-black dark:bg-white rounded-full py-6 px-11 border-[#e6e9ee]"
+          to="/blog"
+        >
+          Read the blog
+        </Link>
+
+        <Link
+          className="hover:ring-4 border-2 rounded-full py-6 px-11 border-[#e6e9ee]"
+          to="/projects"
+        >
+          See projects
+        </Link>
+      </div>
+    </section>
   );
 }
