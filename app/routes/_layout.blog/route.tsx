@@ -3,18 +3,7 @@ import { Link, useLoaderData } from "@remix-run/react";
 import { Link as LinkUI } from "~/components/ui/Link";
 import { drizzle } from "drizzle-orm/d1";
 import { post } from "~/db/schema";
-
-interface Env {
-  BLOG_DB: D1Database;
-}
-
-interface Post {
-  id: number;
-  date: string;
-  title: string;
-  content: string;
-  tags: string;
-}
+import { Env, Post } from "~/types";
 
 export const loader: LoaderFunction = async ({ context }) => {
   const env = context.env as Env;
