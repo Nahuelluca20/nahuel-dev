@@ -2,8 +2,8 @@ import type { MetaFunction } from "@remix-run/cloudflare";
 import { Link } from "@remix-run/react";
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Nahuel dev" },
+    { name: "description", content: "Welcome web - Nahuel dev" },
   ];
 };
 
@@ -21,7 +21,7 @@ export default function Index() {
           Nahuel Luca - FrontEnd Developer
         </h2>
       </div>
-      <div className="flex gap-5 mt-10 text-lg font-semibold">
+      <div className="grid max-w-[300px] md:flex gap-5 mt-10 text-lg font-semibold">
         <Link
           className="hover:ring-4 border-2 text-white dark:text-black bg-black dark:bg-white rounded-full py-6 px-11 border-[#e6e9ee]"
           to="/blog"
