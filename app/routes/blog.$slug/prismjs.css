@@ -9,12 +9,16 @@ p > code {
   @apply text-black dark:text-[#d1d5db];
 }
 
-li > code {
-  @apply text-black dark:text-[#d1d5db];
+article > ul > li {
+  @apply text-[#535661] dark:text-[#a9adc1];
 }
 
 article > li {
   @apply text-[#535661] dark:text-[#a9adc1];
+}
+
+li > code {
+  @apply text-black dark:text-[#d1d5db];
 }
 
 article > h1 {
