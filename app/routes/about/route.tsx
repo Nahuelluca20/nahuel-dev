@@ -11,7 +11,7 @@ export default function About() {
               Hello, {"I'm"} Nahuel! 👋 {"I'm"} a passionate Frontend Developer
               dedicated to crafting captivating web experiences. My expertise
               lies in leveraging cutting-edge technologies, specializing in
-              development with React, Next.js, and Remix.
+              development with React, Next.js and Remix.
             </p>
             <p>
               I wield Tailwind CSS to style my creations with both elegance and

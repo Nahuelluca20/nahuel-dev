@@ -29,7 +29,7 @@ const projectsItems = [
     title: "Hacker News Clone",
     content:
       "Hacker News mini clone, you can see the latest stories and access comments.",
-    deployLink: "https://github.com/Nahuelluca20/trello-clone",
+    deployLink: "https://hackernews-remix-clone.netlify.app/",
     codeLink: "https://github.com/Nahuelluca20/hacker-news-remix-clone",
     tags: ["Remix", "TailwindCSS", "API"],
   },
@@ -37,7 +37,7 @@ const projectsItems = [
     title: "Comments App",
     content:
       "Feedback app using tRPC for a typesafe API and PlantScale as a database.",
-    deployLink: "https://hackernews-remix-clone.netlify.app/",
+    deployLink: "https://comments-app-alpha.vercel.app/",
     codeLink: "https://github.com/Nahuelluca20/comments-app",
     tags: ["NextJS", "tRPC", "NextAuth"],
   },
