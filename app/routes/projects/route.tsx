@@ -5,7 +5,7 @@ const projectsItems = [
     title: "Trello clone",
     content:
       "Trello clone using remix, you can create boards and tasks like Trello.",
-    deployLink: "https://github.com/Nahuelluca20/trello-clone",
+    deployLink: "https://trello-clone-zeta-wheat.vercel.app/",
     codeLink: "https://github.com/Nahuelluca20/trello-clone",
     tags: ["Remix", "Prisma", "Supabase"],
   },
@@ -47,6 +47,13 @@ const projectsItems = [
     deployLink: "https://sider-dev-blog.vercel.app/",
     codeLink: "https://github.com/Nahuelluca20/blog-mdx-nextjs",
     tags: ["NextJS", "MDX", "shadcn/ui"],
+  },
+  {
+    title: "Task Manager",
+    content: "App to manage tasks using Remix and Supabase.",
+    deployLink: "https://task-manager-remix.vercel.app/",
+    codeLink: "https://github.com/Nahuelluca20/task-manager-remix",
+    tags: ["Remix", "Supabase", "shadcn/ui"],
   },
 ];
 
