@@ -10,7 +10,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <section
-      className="grid items-center justify-center pt-20"
+      className="grid items-center justify-center pt-10 md:pt-20"
       style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}
     >
       <div className="space-y-2">
@@ -21,7 +21,7 @@ export default function Index() {
           Nahuel Luca - FrontEnd Developer
         </h2>
       </div>
-      <div className="grid max-w-[300px] md:flex gap-5 mt-10 text-lg font-semibold">
+      <div className="grid max-w-[300px] md:max-w-full md:flex gap-5 mt-10 text-lg font-semibold">
         <Link
           className="hover:ring-4 border-2 text-white dark:text-black bg-black dark:bg-white rounded-full py-6 px-11 border-[#e6e9ee]"
           to="/blog"
