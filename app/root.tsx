@@ -47,7 +47,7 @@ function App() {
       <body
         className={twMerge(
           "overflow-x-hidden dark:bg-[#1F2028]  ",
-          openMenu ? "overflow-hidden max-h-screen" : "overflow-auto"
+          openMenu ? "overflow-hidden max-h-screen" : "overflow-x-hidden"
         )}
       >
         <Header openMenu={openMenu} setOpenMenu={setOpenMenu} />
