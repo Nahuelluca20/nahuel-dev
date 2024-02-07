@@ -16,10 +16,11 @@ export default function Header({
   const [theme, setTheme] = useTheme();
 
   const links = [
-    { href: "/blog", text: "Blog" },
-    { href: "/projects", text: "Projects" },
-    { href: "/about", text: "About me" },
-    { href: "/contact", text: "Contact me" },
+    { href: "/blog", text: "Blog", blank: "" },
+    { href: "/projects", text: "Projects", blank: "" },
+    { href: "/about", text: "About me", blank: "" },
+    { href: "/contact", text: "Contact me", blank: "" },
+    { href: "https://cv-nahuel.vercel.app/", text: "CV", blank: "blank" },
   ];
 
   const location = useLocation();
@@ -37,6 +38,7 @@ export default function Header({
               <li className="relative group" key={`link-${link.text}`}>
                 <Link
                   to={link.href}
+                  target={link.blank}
                   className={twMerge(
                     "block pb-1",
                     link.href === `/${path}`
