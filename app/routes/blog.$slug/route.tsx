@@ -18,7 +18,6 @@ export async function loader({ params, context }: LoaderFunctionArgs) {
     env.BLOG_DB,
     String(slug)
   );
-  console.log(result[0].content);
   const content =
     result[0].content && (await markdownParser(result[0].content));
   const headers = { "Cache-Control": "public, max-age=60" };
@@ -29,7 +28,7 @@ export default function BlogId() {
   const content = useLoaderData<typeof loader>();
   const navigate = useNavigate();
   return (
-    <div className="lg:min-w-[900px] mx-auto prose prose-sm sm:prose lg:prose-lg">
+    <div className="lg:min-w-[800px] mx-auto prose prose-sm sm:prose lg:prose-lg">
       <button
         className="flex mb-10 dark:text-white items-center font-bold gap-2 z-0 transition-transform transform hover:-translate-x-1 focus:outline-none"
         onClick={() => {
