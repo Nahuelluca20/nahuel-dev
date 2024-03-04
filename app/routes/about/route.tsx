@@ -1,4 +1,12 @@
+import { MetaFunction } from "@remix-run/cloudflare";
 import MePNG from "public/me.png";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "About" },
+    { name: "description", content: "About me - Nahuel dev" },
+  ];
+};
 
 export default function About() {
   return (

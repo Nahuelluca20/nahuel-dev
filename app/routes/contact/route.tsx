@@ -1,4 +1,12 @@
+import { MetaFunction } from "@remix-run/cloudflare";
 import { Link } from "~/components/ui/Link";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Contact" },
+    { name: "description", content: "Contact me - Nahuel dev" },
+  ];
+};
 
 export default function contact() {
   return (

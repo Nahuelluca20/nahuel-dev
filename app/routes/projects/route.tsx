@@ -1,3 +1,4 @@
+import { MetaFunction } from "@remix-run/cloudflare";
 import CardProject from "./components/card-project";
 
 const projectsItems = [
@@ -56,6 +57,13 @@ const projectsItems = [
     tags: ["Remix", "Supabase", "shadcn/ui"],
   },
 ];
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Project" },
+    { name: "description", content: "My projexts - Nahuel dev" },
+  ];
+};
 
 export default function projects() {
   return (
