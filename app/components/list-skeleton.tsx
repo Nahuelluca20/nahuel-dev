@@ -6,7 +6,7 @@ export default function ListSkeleton() {
         <li key={index} className="w-full">
           <div className="animate-pulse flex space-x-4 w-full">
             <div className="grid grid-cols-3 gap-4 w-full">
-              <div className="h-[20px] bg-slate-400 py-1 w-full rounded col-span-2"></div>
+              <div className="h-[24px] bg-slate-400 py-1 w-full rounded-md col-span-2"></div>
             </div>
           </div>
         </li>
