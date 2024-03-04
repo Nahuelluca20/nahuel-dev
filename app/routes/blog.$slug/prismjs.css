@@ -34,12 +34,28 @@ article > h3 {
   @apply text-black dark:text-white;
 }
 
+article > h4 {
+  @apply text-black dark:text-white;
+}
+
+article > h5 {
+  @apply text-black dark:text-white;
+}
+
+article > h6 {
+  @apply text-black dark:text-white;
+}
+
 article > a {
   color: #36a3ff!;
 }
 
 article > p > a {
   color: #36a3ff!;
+}
+
+strong {
+  @apply text-[#535661] dark:text-[#a9adc1] font-bold;
 }
 
 blockquote {
