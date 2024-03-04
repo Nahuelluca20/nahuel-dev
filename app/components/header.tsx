@@ -62,6 +62,7 @@ export default function Header({
 
         <div className="flex items-center gap-2 ">
           <Button
+            aria-label="Open menu"
             className="px-2 md:hidden"
             variant="icon"
             onPress={() => setOpenMenu(!openMenu)}
@@ -74,7 +75,7 @@ export default function Header({
           </Button>
 
           <MenuTrigger>
-            <Button className="px-2" variant="secondary">
+            <Button aria-label="set theme" className="px-2" variant="secondary">
               {Theme.DARK === theme ? (
                 <Moon className="w-5 h-5" />
               ) : (
