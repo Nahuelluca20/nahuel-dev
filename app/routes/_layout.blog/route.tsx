@@ -1,4 +1,4 @@
-import { LoaderFunction, defer } from "@remix-run/cloudflare";
+import { LoaderFunction, MetaFunction, defer } from "@remix-run/cloudflare";
 import { Link, useLoaderData, Await } from "@remix-run/react";
 import { Link as LinkUI } from "~/components/ui/Link";
 import { Env, Post } from "~/types";
@@ -8,11 +8,21 @@ import { Suspense } from "react";
 import { getAllBlogs } from "./queries";
 import ListSkeleton from "~/components/list-skeleton";
 
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Blog" },
+    { name: "description", content: "Blogs - Nahuel dev" },
+  ];
+};
+
 export const loader: LoaderFunction = async ({ context }) => {
   const env = context.env as Env;
-  const results = await getAllBlogs(env.BLOG_DB);
-  const headers = { "Cache-Control": "public, max-age=60" };
-  return defer({ results }, { headers });
+  const results = getAllBlogs(env.BLOG_DB).then(async (res) => {
+    await new Promise((resolve) => setTimeout(() => resolve(res), 3000));
+    return res;
+  });
+  // const headers = { "Cache-Control": "public, max-age=60" };
+  return defer({ results });
 };
 
 export default function Blog() {
@@ -30,11 +40,13 @@ export default function Blog() {
           <Suspense fallback={<ListSkeleton />}>
             <Await resolve={results}>
               {(results) => (
-                <ul className="list-disc">
+                <ul className="list-disc space-y-2">
                   {results?.map((post: Post) => (
                     <li key={`post-${post.id}`}>
                       <LinkUI>
-                        <Link to={`/blog/${post.id}`}>{post.title}</Link>
+                        <Link prefetch="intent" to={`/blog/${post.id}`}>
+                          {post.title}
+                        </Link>
                       </LinkUI>
                     </li>
                   ))}
