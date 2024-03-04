@@ -1,4 +1,9 @@
-import { LinksFunction, LoaderFunctionArgs, json } from "@remix-run/cloudflare";
+import {
+  LinksFunction,
+  LoaderFunctionArgs,
+  MetaFunction,
+  json,
+} from "@remix-run/cloudflare";
 import { useLoaderData, useNavigate } from "@remix-run/react";
 
 import { MarkdownView } from "~/components/markdown";
@@ -8,27 +13,47 @@ import { ArrowLeft } from "lucide-react";
 import { Env } from "~/types";
 import { getBlogPost } from "./queries";
 
+interface IBlog {
+  content: string | null;
+  tags: string | null;
+  title: string | null;
+}
+
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
+
+// export const meta: MetaFunction = () => {
+//   return [
+//     { title: "Nahuel dev" },
+//     { name: "description", content: "Welcome web - Nahuel dev" },
+//   ];
+// };
 
 export async function loader({ params, context }: LoaderFunctionArgs) {
   const slug = params.slug;
 
   const env = context.env as Env;
-  const result: { content: string | null }[] = await getBlogPost(
-    env.BLOG_DB,
-    String(slug)
-  );
+  const result: IBlog[] = await getBlogPost(env.BLOG_DB, String(slug));
+  console.log("dsa", result);
   const content =
     result[0].content && (await markdownParser(result[0].content));
+  const tags = result[0]?.tags;
+  const title = result[0]?.title;
   const headers = { "Cache-Control": "public, max-age=60" };
-  return json(content, { headers });
+  return json({ content, tags, title }, { headers });
 }
 
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  return [
+    { title: data?.title || "Nahuel dev" },
+    { name: "description", content: `${data?.tags}` },
+  ];
+};
+
 export default function BlogId() {
-  const content = useLoaderData<typeof loader>();
+  const { content } = useLoaderData<typeof loader>();
   const navigate = useNavigate();
   return (
-    <div className="lg:min-w-[800px] lg:max-w-[800px] mx-auto prose prose-sm sm:prose lg:prose-lg">
+    <div className="lg:min-w-[800px] lg:max-w-[800px] mx-auto prose prose-md lg:prose-lg">
       <button
         className="flex mb-10 dark:text-white items-center font-bold gap-2 z-0 transition-transform transform hover:-translate-x-1 focus:outline-none"
         onClick={() => {

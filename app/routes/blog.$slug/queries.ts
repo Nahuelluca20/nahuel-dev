@@ -6,7 +6,9 @@ export async function getBlogPost(env: D1Database, slug: string) {
   const db = drizzle(env);
   return await db
     .select({
+      tags: post.tags,
       content: post.content,
+      title: post.title,
     })
     .from(post)
     .where(eq(post.id, String(slug)))
