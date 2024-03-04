@@ -17,12 +17,9 @@ export const meta: MetaFunction = () => {
 
 export const loader: LoaderFunction = async ({ context }) => {
   const env = context.env as Env;
-  const results = getAllBlogs(env.BLOG_DB).then(async (res) => {
-    await new Promise((resolve) => setTimeout(() => resolve(res), 3000));
-    return res;
-  });
-  // const headers = { "Cache-Control": "public, max-age=60" };
-  return defer({ results });
+  const results = getAllBlogs(env.BLOG_DB);
+  const headers = { "Cache-Control": "public, max-age=60" };
+  return defer({ results }, { headers });
 };
 
 export default function Blog() {
