@@ -1,5 +1,5 @@
 export default function ListSkeleton() {
-  const items = Array.from({ length: 6 }, (_, index) => index);
+  const items = Array.from({ length: 8 }, (_, index) => index);
   return (
     <ul className="list-disc space-y-2 w-full">
       {items.map((item, index) => (
