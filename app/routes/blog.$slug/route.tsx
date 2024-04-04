@@ -21,19 +21,11 @@ interface IBlog {
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
-// export const meta: MetaFunction = () => {
-//   return [
-//     { title: "Nahuel dev" },
-//     { name: "description", content: "Welcome web - Nahuel dev" },
-//   ];
-// };
-
 export async function loader({ params, context }: LoaderFunctionArgs) {
   const slug = params.slug;
 
   const env = context.env as Env;
   const result: IBlog[] = await getBlogPost(env.BLOG_DB, String(slug));
-  console.log("dsa", result);
   const content =
     result[0].content && (await markdownParser(result[0].content));
   const tags = result[0]?.tags;
@@ -52,6 +44,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 export default function BlogId() {
   const { content } = useLoaderData<typeof loader>();
   const navigate = useNavigate();
+
   return (
     <div className="lg:min-w-[800px] lg:max-w-[800px] mx-auto prose prose-md lg:prose-lg">
       <button
