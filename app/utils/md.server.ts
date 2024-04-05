@@ -8,6 +8,16 @@ const fence = {
     },
   },
 };
+
+const heading = {
+  render: "Heading",
+  attributes: {
+    level: { type: String },
+  },
+};
+
 export function markdownParser(markdown: string): RenderableTreeNodes {
-  return Markdoc.transform(Markdoc.parse(markdown), { nodes: { fence } });
+  return Markdoc.transform(Markdoc.parse(markdown), {
+    nodes: { fence, heading },
+  });
 }

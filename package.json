@@ -6,6 +6,7 @@
   "scripts": {
     "build": "remix build",
     "dev": "remix dev --manual -c \"npm run start\"",
+    "up": "drizzle-kit up:sqlite --schema=app/db/schema.ts",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "wrangler pages dev --local --compatibility-date=2023-06-21 ./public",
     "typecheck": "tsc",

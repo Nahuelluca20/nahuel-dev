@@ -24,7 +24,6 @@ export const loader: LoaderFunction = async ({ context }) => {
 
 export default function Blog() {
   const { results }: { results: Post[] } = useLoaderData();
-
   return (
     <section className="grid gap-2 w-full max-w-[700px] mx-auto">
       <h1 className="text-3xl font-semibold">Blog, tutorials and more...</h1>
