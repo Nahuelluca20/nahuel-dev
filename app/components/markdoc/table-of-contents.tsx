@@ -6,18 +6,18 @@ export default function TableOfContents({ tableOfContents }: any) {
   );
 
   return (
-    <div className="fixed hidden lg:block py-8  px-2  mx-2">
+    <div className="fixed hidden lg:block py-8 space-y-4 px-2  mx-2">
       <div className="text-2xl font-semibold dark:text-white">
         Table of content
       </div>
-      <ul className="pl-2 mt-4 list-disc list-inside text-blue-500">
+      <ul className="pl-2 space-y-2 list-disc list-inside text-blue-500">
         {items.map((item) => {
           const href = `#${item.title}`;
           const active =
             typeof window !== "undefined" && window.location.hash === href;
 
           return (
-            <Link
+            <li
               key={item.title}
               className={[
                 active ? "text-red-500" : undefined,
@@ -27,10 +27,9 @@ export default function TableOfContents({ tableOfContents }: any) {
                   ? "pl-10"
                   : undefined,
               ].join("")}
-              to={href}
             >
-              <li>{item.title}</li>
-            </Link>
+              <Link to={href}>{item.title}</Link>
+            </li>
           );
         })}
       </ul>
