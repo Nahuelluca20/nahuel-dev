@@ -1,10 +1,12 @@
+import { Link } from "@remix-run/react";
+
 export default function TableOfContents({ tableOfContents }: any) {
   const items: any[] = tableOfContents.filter(
     (item: any) => item.level === 1 || item.level === 2 || item.level === 3
   );
 
   return (
-    <div className="fixed hidden lg:block py-8 space-y-4  mx-2">
+    <div className="fixed hidden lg:block py-8 space-y-4 px-2  mx-2">
       <div className="text-2xl font-semibold dark:text-white">
         Table of content
       </div>
@@ -15,7 +17,7 @@ export default function TableOfContents({ tableOfContents }: any) {
             typeof window !== "undefined" && window.location.hash === href;
 
           return (
-            <li
+            <Link
               key={item.title}
               className={[
                 active ? "text-red-500" : undefined,
@@ -25,9 +27,10 @@ export default function TableOfContents({ tableOfContents }: any) {
                   ? "pl-10"
                   : undefined,
               ].join("")}
+              to={href}
             >
-              <a href={href}>{item.title}</a>
-            </li>
+              <li>{item.title}</li>
+            </Link>
           );
         })}
       </ul>
