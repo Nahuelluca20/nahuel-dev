@@ -6,11 +6,11 @@ export default function TableOfContents({ tableOfContents }: any) {
   );
 
   return (
-    <div className="fixed hidden lg:block py-8 space-y-4 px-2  mx-2">
+    <div className="fixed hidden lg:block py-8 space-y-4 px-2 mx-2">
       <div className="text-2xl font-semibold dark:text-white">
         Table of content
       </div>
-      <ul className="pl-2 space-y-2 list-disc list-inside text-blue-500">
+      <ul className="h-full max-h-[600px] overflow-y-auto pl-2 space-y-2 list-disc list-inside text-blue-500">
         {items.map((item) => {
           const href = `#${item.title}`;
           const active =

@@ -63,7 +63,7 @@ export default function BlogId() {
       <div className="flex gap-0">
         <MarkdownView content={content} />
 
-        <div className="relative -mt-8">
+        <div className="relative -mt-20 max-h-[300px] overscroll-contain">
           <TableOfContents tableOfContents={tableOfContents} />
         </div>
       </div>
