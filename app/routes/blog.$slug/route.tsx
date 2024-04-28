@@ -28,7 +28,6 @@ export async function loader({ params, context }: LoaderFunctionArgs) {
   const result: IBlog[] = await getBlogPost(env.BLOG_DB, String(slug));
   const content =
     result[0].content && (await markdownParser(result[0].content));
-  console.log(content);
   const tags = result[0]?.tags;
   const title = result[0]?.title;
   const headers = { "Cache-Control": "public, max-age=60" };
