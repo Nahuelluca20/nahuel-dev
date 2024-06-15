@@ -11,12 +11,12 @@ const projectsItems = [
     tags: ["Remix", "Prisma", "Supabase"],
   },
   {
-    title: "Next.js 14 with AuthJS",
+    title: "MDX notes editor",
     content:
-      "An example of how to handle authentication in Next.js 14 with AuthJS. Log in to comment in the app.",
-    deployLink: "https://nextjs-authjs-example.vercel.app/",
-    codeLink: "https://github.com/Nahuelluca20/nextjs-authjs-example",
-    tags: ["NextJS", "AuthJS", "Supabase"],
+      "In this app made with NextJS 14 and Strapi's Markdoc you can create notes with MDX and have the live preview.",
+    deployLink: "https://nextjs-mdx-notes.vercel.app/dashboard",
+    codeLink: "https://github.com/Nahuelluca20/nextjs-mdx-notes",
+    tags: ["NextJS", "NextAuth", "TursoDB"],
   },
   {
     title: "WhosIn?",
@@ -35,14 +35,6 @@ const projectsItems = [
     tags: ["Remix", "TailwindCSS", "API"],
   },
   {
-    title: "Comments App",
-    content:
-      "Feedback app using tRPC for a typesafe API and PlantScale as a database.",
-    deployLink: "https://comments-app-alpha.vercel.app/",
-    codeLink: "https://github.com/Nahuelluca20/comments-app",
-    tags: ["NextJS", "tRPC", "NextAuth"],
-  },
-  {
     title: "Blog MDX",
     content: "Simple blog using MDX.",
     deployLink: "https://sider-dev-blog.vercel.app/",
@@ -55,6 +47,14 @@ const projectsItems = [
     deployLink: "https://task-manager-remix.vercel.app/",
     codeLink: "https://github.com/Nahuelluca20/task-manager-remix",
     tags: ["Remix", "Supabase", "shadcn/ui"],
+  },
+  {
+    title: "Comments App",
+    content:
+      "Feedback app using tRPC for a typesafe API and PlantScale as a database.",
+    deployLink: "https://comments-app-alpha.vercel.app/",
+    codeLink: "https://github.com/Nahuelluca20/comments-app",
+    tags: ["NextJS", "tRPC", "NextAuth"],
   },
 ];
 
