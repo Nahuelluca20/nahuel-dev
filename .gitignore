@@ -10,3 +10,5 @@ node_modules
 .env
 .wrangler
 wrangler.toml
+/build/client
+/build/server
