@@ -1,7 +1,7 @@
 import { LoaderFunction, MetaFunction, defer } from "@remix-run/cloudflare";
 import { Link, useLoaderData, Await } from "@remix-run/react";
 import { Link as LinkUI } from "~/components/ui/Link";
-import { Env, Post } from "~/types";
+import { Post } from "~/types";
 
 import { Suspense } from "react";
 
@@ -16,8 +16,8 @@ export const meta: MetaFunction = () => {
 };
 
 export const loader: LoaderFunction = async ({ context }) => {
-  const env = context.env as Env;
-  const results = getAllBlogs(env.BLOG_DB);
+  const { BLOG_DB } = context.cloudflare.env;
+  const results = getAllBlogs(BLOG_DB);
   const headers = { "Cache-Control": "public, max-age=60" };
   return defer({ results }, { headers });
 };

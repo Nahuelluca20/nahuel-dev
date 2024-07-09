@@ -1,12 +1,14 @@
 import type { RenderableTreeNodes } from "@markdoc/markdoc";
 
-import { renderers } from "@markdoc/markdoc";
+import markdoc from "@markdoc/markdoc";
 import * as React from "react";
 import prism from "prismjs";
 
 type Props = {
   content: RenderableTreeNodes;
 };
+
+const { renderers } = markdoc;
 
 export function Fence({
   children,

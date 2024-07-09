@@ -19,6 +19,14 @@ const projectsItems = [
     tags: ["NextJS", "NextAuth", "TursoDB"],
   },
   {
+    title: "React Flag API App",
+    content:
+      "An app made with react that consumes the flag-api API to display the countries and their data.",
+    deployLink: "https://react-flag-api.netlify.app/",
+    codeLink: "https://github.com/Nahuelluca20/react-flag-API",
+    tags: ["React", "React Router", "API"],
+  },
+  {
     title: "WhosIn?",
     content:
       "WhosIn is an app to create events and have your friends confirm their presence.",

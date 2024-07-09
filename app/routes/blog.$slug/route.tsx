@@ -8,9 +8,8 @@ import { useLoaderData, useNavigate } from "@remix-run/react";
 
 import { MarkdownView } from "~/components/markdown";
 import { markdownParser } from "~/utils/md.server";
-import styles from "./prismjs.css";
+import styles from "./prismjs.css?url";
 import { ArrowLeft } from "lucide-react";
-import { Env } from "~/types";
 import { getBlogPost } from "./queries";
 
 interface IBlog {
@@ -24,10 +23,10 @@ export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 export async function loader({ params, context }: LoaderFunctionArgs) {
   const slug = params.slug;
 
-  const env = context.env as Env;
-  const result: IBlog[] = await getBlogPost(env.BLOG_DB, String(slug));
+  const { BLOG_DB } = context.cloudflare.env;
+  const result: IBlog[] = await getBlogPost(BLOG_DB, String(slug));
   const content =
-    result[0].content && (await markdownParser(result[0].content));
+    result[0]?.content && (await markdownParser(result[0].content));
   const tags = result[0]?.tags;
   const title = result[0]?.title;
   const headers = { "Cache-Control": "public, max-age=60" };

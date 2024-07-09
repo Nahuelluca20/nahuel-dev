@@ -1,7 +1,6 @@
 import type { LinksFunction, LoaderFunction } from "@remix-run/cloudflare";
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
@@ -10,14 +9,15 @@ import {
 } from "@remix-run/react";
 import { twMerge } from "tailwind-merge";
 
-import styles from "./tailwind.css";
+import stylesheet from "./tailwind.css?url";
 import Header from "./components/header";
 import { Theme, ThemeProvider, useTheme } from "./utils/theme-provider";
 import { getThemeSession } from "./utils/theme.server";
 import { useState } from "react";
 
-export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
-
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: stylesheet },
+];
 export type LoaderData = {
   theme: Theme | null;
 };
@@ -56,7 +56,6 @@ function App() {
         </div>
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
       </body>
     </html>
   );
