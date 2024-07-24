@@ -25,8 +25,7 @@ export async function loader({ params, context }: LoaderFunctionArgs) {
 
   const { BLOG_DB } = context.cloudflare.env;
   const result: IBlog[] = await getBlogPost(BLOG_DB, String(slug));
-  const content =
-    result[0]?.content && (await markdownParser(result[0].content));
+  const content = result[0]?.content && markdownParser(result[0].content);
   const tags = result[0]?.tags;
   const title = result[0]?.title;
   const headers = { "Cache-Control": "private, max-age=3600" };
