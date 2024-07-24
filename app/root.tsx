@@ -16,7 +16,7 @@ import { getThemeSession } from "./utils/theme.server";
 import { useState } from "react";
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet, prefetch: "render" },
+  { rel: "stylesheet", href: stylesheet },
 ];
 
 export type LoaderData = {

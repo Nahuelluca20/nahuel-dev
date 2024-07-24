@@ -18,7 +18,10 @@ interface IBlog {
   title: string | null;
 }
 
-export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: styles },
+  { rel: "preload", href: styles, as: "style" },
+];
 
 export async function loader({ params, context }: LoaderFunctionArgs) {
   const slug = params.slug;
