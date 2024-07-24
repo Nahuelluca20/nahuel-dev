@@ -19,8 +19,8 @@ interface IBlog {
 }
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: styles },
   { rel: "preload", href: styles, as: "style" },
+  { rel: "stylesheet", href: styles },
 ];
 
 export async function loader({ params, context }: LoaderFunctionArgs) {
@@ -32,7 +32,7 @@ export async function loader({ params, context }: LoaderFunctionArgs) {
     result[0]?.content && (await markdownParser(result[0].content));
   const tags = result[0]?.tags;
   const title = result[0]?.title;
-  const headers = { "Cache-Control": "public, max-age=60" };
+  const headers = { "Cache-Control": "private, max-age=3600" };
   return json({ content, tags, title }, { headers });
 }
 
