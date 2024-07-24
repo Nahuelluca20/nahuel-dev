@@ -17,7 +17,9 @@ import { useState } from "react";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
+  { rel: "preload", href: stylesheet, as: "style" },
 ];
+
 export type LoaderData = {
   theme: Theme | null;
 };
