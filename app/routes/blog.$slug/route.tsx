@@ -54,7 +54,7 @@ export default function BlogId() {
         <ArrowLeft />
         <span className="mb-[1px]">Back to posts</span>
       </button>
-      <MarkdownView content={content} />
+      {content && <MarkdownView content={content} />}
     </div>
   );
 }
