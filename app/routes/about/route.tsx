@@ -1,5 +1,5 @@
 import { MetaFunction } from "@remix-run/cloudflare";
-import MePNG from "public/me.png";
+import MePNG from "public/me.png?url";
 
 export const meta: MetaFunction = () => {
   return [

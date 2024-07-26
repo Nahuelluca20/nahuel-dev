@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+#nprogress .bar {
+  background: #29d;
+  width: 100%;
+  height: 3px;
+}
+
 html {
   color-scheme: normal;
   scroll-behavior: smooth;

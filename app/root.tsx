@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useNavigation,
 } from "@remix-run/react";
 import { twMerge } from "tailwind-merge";
 
@@ -13,10 +14,20 @@ import stylesheet from "./tailwind.css?url";
 import Header from "./components/header";
 import { Theme, ThemeProvider, useTheme } from "./utils/theme-provider";
 import { getThemeSession } from "./utils/theme.server";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import NProgress from "nprogress";
+import nProgressStyles from "nprogress/nprogress.css?url";
+
+NProgress.configure({
+  showSpinner: false,
+  minimum: 0.1,
+  easing: "ease",
+  speed: 500,
+});
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
+  { rel: "stylesheet", href: nProgressStyles },
 ];
 
 export type LoaderData = {
@@ -36,6 +47,16 @@ export const loader: LoaderFunction = async ({ request }) => {
 function App() {
   const [theme] = useTheme();
   const [openMenu, setOpenMenu] = useState(false);
+
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    if (navigation.state === "loading") {
+      NProgress.start();
+    } else {
+      NProgress.done();
+    }
+  }, [navigation.state]);
 
   return (
     <html lang="en" className={twMerge(theme)}>
