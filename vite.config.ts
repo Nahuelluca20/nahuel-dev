@@ -10,9 +10,6 @@ export default defineConfig({
     remixCloudflareDevProxy(),
     remix({
       ignoredRouteFiles: ["**/*server.ts", "**/*.css?url"],
-      future: {
-        unstable_singleFetch: true,
-      },
     }),
     tsconfigPaths(),
   ],
