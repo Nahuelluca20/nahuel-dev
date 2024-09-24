@@ -10,7 +10,7 @@ import { MarkdownView } from "~/components/markdown";
 import { markdownParser } from "~/utils/md.server";
 import styles from "./prismjs.css?url";
 import { ArrowLeft } from "lucide-react";
-import { getBlogPost } from "./queries";
+import { getBlogPost } from "./queries.server";
 
 interface IBlog {
   content: string | null;

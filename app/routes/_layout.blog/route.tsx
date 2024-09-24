@@ -5,7 +5,7 @@ import { Post } from "~/types";
 
 import { Suspense } from "react";
 
-import { getAllBlogs } from "./queries";
+import { getAllBlogs } from "./queries.server";
 import ListSkeleton from "~/components/list-skeleton";
 
 export const meta: MetaFunction = () => {
