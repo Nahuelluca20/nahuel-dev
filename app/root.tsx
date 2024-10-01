@@ -26,6 +26,8 @@ NProgress.configure({
 });
 
 export const links: LinksFunction = () => [
+  { rel: "preload", as: "style", href: stylesheet },
+  { rel: "preload", as: "style", href: nProgressStyles },
   { rel: "stylesheet", href: stylesheet },
   { rel: "stylesheet", href: nProgressStyles },
 ];
