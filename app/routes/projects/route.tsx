@@ -1,7 +1,23 @@
-import { MetaFunction } from "@remix-run/cloudflare";
+import type { MetaFunction } from "@remix-run/cloudflare";
 import CardProject from "./components/card-project";
 
 const projectsItems = [
+  {
+    title: "Treefy",
+    content:
+      "Organize your ideas, share your knowledge, and grow your understanding with Treefy.",
+    deployLink: "https://treefy.pages.dev/",
+    codeLink: "https://github.com/Nahuelluca20/treefy",
+    tags: ["Remix", "Cloudflare", "KV"],
+  },
+  {
+    title: "RAG LLM System",
+    content:
+      "A RAG system using an LLM that responds according to the user's questions.",
+    deployLink: "https://nahuel-dev.pages.dev/blog/how-create-rag-system",
+    codeLink: "https://github.com/Nahuelluca20/ollama-techstacks-api",
+    tags: ["Pyhon", "FastAPI", "LLMs", "Ollama"],
+  },
   {
     title: "Trello clone",
     content:
@@ -9,22 +25,6 @@ const projectsItems = [
     deployLink: "https://trello-clone-zeta-wheat.vercel.app/",
     codeLink: "https://github.com/Nahuelluca20/trello-clone",
     tags: ["Remix", "Prisma", "Supabase"],
-  },
-  {
-    title: "MDX notes editor",
-    content:
-      "In this app made with NextJS 14 and Strapi's Markdoc you can create notes with MDX and have the live preview.",
-    deployLink: "https://nextjs-mdx-notes.vercel.app/dashboard",
-    codeLink: "https://github.com/Nahuelluca20/nextjs-mdx-notes",
-    tags: ["NextJS", "NextAuth", "TursoDB"],
-  },
-  {
-    title: "React Flag API App",
-    content:
-      "An app made with react that consumes the flag-api API to display the countries and their data.",
-    deployLink: "https://react-flag-api.netlify.app/",
-    codeLink: "https://github.com/Nahuelluca20/react-flag-API",
-    tags: ["React", "React Router", "API"],
   },
   {
     title: "WhosIn?",
@@ -43,26 +43,12 @@ const projectsItems = [
     tags: ["Remix", "TailwindCSS", "API"],
   },
   {
-    title: "Blog MDX",
-    content: "Simple blog using MDX.",
-    deployLink: "https://sider-dev-blog.vercel.app/",
-    codeLink: "https://github.com/Nahuelluca20/blog-mdx-nextjs",
-    tags: ["NextJS", "MDX", "shadcn/ui"],
-  },
-  {
-    title: "Task Manager",
-    content: "App to manage tasks using Remix and Supabase.",
-    deployLink: "https://task-manager-remix.vercel.app/",
-    codeLink: "https://github.com/Nahuelluca20/task-manager-remix",
-    tags: ["Remix", "Supabase", "shadcn/ui"],
-  },
-  {
-    title: "Comments App",
+    title: "React Flag API App",
     content:
-      "Feedback app using tRPC for a typesafe API and PlantScale as a database.",
-    deployLink: "https://comments-app-alpha.vercel.app/",
-    codeLink: "https://github.com/Nahuelluca20/comments-app",
-    tags: ["NextJS", "tRPC", "NextAuth"],
+      "An app made with react that consumes the flag-api API to display the countries and their data.",
+    deployLink: "https://react-flag-api.netlify.app/",
+    codeLink: "https://github.com/Nahuelluca20/react-flag-API",
+    tags: ["React", "React Router", "API"],
   },
 ];
 
@@ -81,9 +67,9 @@ export default function projects() {
         Here are some of the projects I have worked on.
       </h3>
       <div className="flex flex-wrap gap-4 py-5">
-        {projectsItems.map((project, index) => (
+        {projectsItems.map((project) => (
           <CardProject
-            key={index}
+            key={project.title}
             title={project.title}
             content={project.content}
             deployLink={project.deployLink}
