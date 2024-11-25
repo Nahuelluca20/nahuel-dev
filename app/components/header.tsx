@@ -20,7 +20,11 @@ export default function Header({
     { href: "/projects", text: "Projects", blank: "" },
     { href: "/about", text: "About me", blank: "" },
     { href: "/contact", text: "Contact me", blank: "" },
-    { href: "https://cv-nahuel.vercel.app/", text: "CV", blank: "blank" },
+    {
+      href: "https://notes-quartz-c54.pages.dev/",
+      text: "Notes",
+      blank: "blank",
+    },
   ];
 
   const location = useLocation();
@@ -54,7 +58,7 @@ export default function Header({
                       ? "w-full h-[1.5px] bg-blue-400"
                       : "absolute bottom-0 left-0 w-full h-[1.5px] bg-blue-400 transform scale-x-0 origin-left transition-transform group-hover:scale-x-100"
                   )}
-                ></div>
+                />
               </li>
             ))}
           </ul>
