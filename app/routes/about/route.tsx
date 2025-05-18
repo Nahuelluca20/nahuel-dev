@@ -1,4 +1,4 @@
-import { MetaFunction } from "@remix-run/cloudflare";
+import { MetaFunction } from "react-router";
 import MePNG from "public/me.png?url";
 
 export const meta: MetaFunction = () => {

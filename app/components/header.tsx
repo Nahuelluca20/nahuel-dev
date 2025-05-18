@@ -1,4 +1,4 @@
-import { Link, useLocation } from "@remix-run/react";
+import { Link, useLocation } from "react-router";
 import { Moon, Sun, Menu as MenuIcon, X } from "lucide-react";
 import { Button } from "./ui/Button";
 import { Menu, MenuItem } from "./ui/Menu";

@@ -1,9 +1,9 @@
-import { json, redirect } from "@remix-run/cloudflare";
+import { redirect } from "react-router";
 import type {
   ActionFunction,
   LoaderFunction,
   LoaderFunctionArgs,
-} from "@remix-run/cloudflare";
+} from "react-router";
 import { isTheme } from "~/utils/theme-provider";
 import { getThemeSession } from "../utils/theme.server";
 
@@ -16,17 +16,17 @@ export const action: ActionFunction = async ({
   const theme = form.get("theme");
 
   if (!isTheme(theme)) {
-    return json({
-      success: false,
-      message: `theme value of ${theme} is not a valid theme`,
-    });
+    // return json({
+    //   success: false,
+    //   message: `theme value of ${theme} is not a valid theme`,
+    // });
   }
 
-  themeSession.setTheme(theme);
-  return json(
-    { success: true },
-    { headers: { "Set-Cookie": await themeSession.commit() } }
-  );
+  // themeSession.setTheme(theme);
+  // return json(
+  //   { success: true },
+  //   { headers: { "Set-Cookie": await themeSession.commit() } }
+  // );
 };
 
 export const loader: LoaderFunction = () => redirect("/", { status: 404 });

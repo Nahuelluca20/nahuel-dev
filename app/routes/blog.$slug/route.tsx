@@ -3,8 +3,9 @@ import {
   LoaderFunctionArgs,
   MetaFunction,
   json,
-} from "@remix-run/cloudflare";
-import { useLoaderData, useNavigate } from "@remix-run/react";
+  useLoaderData,
+  useNavigate,
+} from "react-router";
 
 import { MarkdownView } from "~/components/markdown";
 import { markdownParser } from "~/utils/md.server";
@@ -32,18 +33,19 @@ export async function loader({ params, context }: LoaderFunctionArgs) {
   const tags = result[0]?.tags;
   const title = result[0]?.title;
   const headers = { "Cache-Control": "private, max-age=3600" };
-  return json({ content, tags, title }, { headers });
+  // return json({ content, tags, title }, { headers });
+  return null;
 }
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
-  return [
-    { title: data?.title || "Nahuel dev" },
-    { name: "description", content: `${data?.tags}` },
-  ];
-};
+// export const meta: MetaFunction<typeof loader> = ({ data }) => {
+//   return [
+//     { title: data?.title || "Nahuel dev" },
+//     { name: "description", content: `${data?.tags}` },
+//   ];
+// };
 
 export default function BlogId() {
-  const { content } = useLoaderData<typeof loader>();
+  // const { content } = useLoaderData<typeof loader>();
   const navigate = useNavigate();
 
   return (
@@ -57,7 +59,7 @@ export default function BlogId() {
         <ArrowLeft />
         <span className="mb-[1px]">Back to posts</span>
       </button>
-      {content && <MarkdownView content={content} />}
+      {/* {content && <MarkdownView content={content} />} */}
     </div>
   );
 }
