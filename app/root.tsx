@@ -1,5 +1,12 @@
 import type { LinksFunction, LoaderFunction } from "react-router";
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from "react-router";
+import {
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLoaderData,
+} from "react-router";
 import { twMerge } from "tailwind-merge";
 
 import stylesheet from "./tailwind.css?url";
