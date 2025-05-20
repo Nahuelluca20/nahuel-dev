@@ -4,7 +4,7 @@ import type { Route } from "../about/+types/route";
 export const meta: Route.MetaFunction = () => {
   return [
     { title: "About" },
-    { name: "description", content: "About me - Loadertsx" },
+    { name: "description", content: "About - Loadertsx" },
   ];
 };
 
