@@ -13,3 +13,4 @@ wrangler.toml
 /build/client
 /build/server
 .react-router/
+bun.lockb
