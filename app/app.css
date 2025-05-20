@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-react-aria-components";
+@plugin "tailwindcss-animate";
+
+@theme {
+  --font-sans: "Mona Sans", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html {
+  color-scheme: normal;
+  scroll-behavior: smooth;
+}
+
+body {
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+    @apply text-white;
+  }
+}

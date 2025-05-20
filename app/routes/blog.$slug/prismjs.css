@@ -1,5 +1,6 @@
 /* PrismJS 1.29.0
 https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+jsx+tsx+typescript */
+@import "tailwindcss";
 
 article > p {
   @apply text-[#535661] dark:text-[#a9adc1] font-medium;

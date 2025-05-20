@@ -1,10 +1,10 @@
-import { Link, useLocation } from "@remix-run/react";
+import { Link, useLocation } from "react-router";
 import { Moon, Sun, Menu as MenuIcon, X } from "lucide-react";
-import { Button } from "./ui/Button";
-import { Menu, MenuItem } from "./ui/Menu";
-import { MenuTrigger } from "react-aria-components";
+// import { Button } from "./ui/Button";
+// import { Menu, MenuItem } from "./ui/Menu";
+// import { MenuTrigger, Popover } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
-import { Theme, useTheme } from "~/utils/theme-provider";
+// import { Theme, useTheme } from "~/utils/theme-provider";
 
 export default function Header({
   setOpenMenu,
@@ -13,7 +13,7 @@ export default function Header({
   setOpenMenu: (open: boolean) => void;
   openMenu: boolean;
 }) {
-  const [theme, setTheme] = useTheme();
+  // const [theme, setTheme] = useTheme();
 
   const links = [
     { href: "/blog", text: "Blog", blank: "" },
@@ -64,21 +64,21 @@ export default function Header({
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2 ">
-          <Button
+        <div className="flex items-center gap-2 md:hidden">
+          <button
             aria-label="Open menu"
+            type="button"
             className="px-2 md:hidden"
-            variant="icon"
-            onPress={() => setOpenMenu(!openMenu)}
+            onClick={() => setOpenMenu(!openMenu)}
           >
             {openMenu ? (
               <X className="w-8 h-8" />
             ) : (
               <MenuIcon className="w-8 h-8" />
             )}
-          </Button>
+          </button>
 
-          <MenuTrigger>
+          {/* <MenuTrigger>
             <Button aria-label="set theme" className="px-2" variant="secondary">
               {Theme.DARK === theme ? (
                 <Moon className="w-5 h-5" />
@@ -86,31 +86,33 @@ export default function Header({
                 <Sun className="w-5 h-5" />
               )}
             </Button>
-            <Menu
-              onAction={() => {
-                setTheme((prevTheme) =>
-                  prevTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
-                );
-                if (theme === Theme.DARK) {
-                  document
-                    .querySelector("html")
-                    ?.style.setProperty("color-scheme", "light");
-                } else {
-                  document
-                    .querySelector("html")
-                    ?.style.setProperty("color-scheme", "dark");
-                }
-              }}
-              disabledKeys={theme === Theme.LIGHT ? ["light"] : ["dark"]}
-              onClose={function Ya() {}}
-              onScroll={function Ya() {}}
-              onSelectionChange={function Ya() {}}
-              placement="bottom right"
-            >
-              <MenuItem id="dark">Dark</MenuItem>
-              <MenuItem id="light">Light</MenuItem>
-            </Menu>
-          </MenuTrigger>
+            <Popover>
+              <Menu
+                onAction={() => {
+                  setTheme((prevTheme) =>
+                    prevTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
+                  );
+                  if (theme === Theme.DARK) {
+                    document
+                      .querySelector("html")
+                      ?.style.setProperty("color-scheme", "light");
+                  } else {
+                    document
+                      .querySelector("html")
+                      ?.style.setProperty("color-scheme", "dark");
+                  }
+                }}
+                disabledKeys={theme === Theme.LIGHT ? ["light"] : ["dark"]}
+                onClose={() => setOpenMenu(false)}
+                onScroll={function Ya() {}}
+                onSelectionChange={function Ya() {}}
+                placement="bottom right"
+              >
+                <MenuItem id="dark">Dark</MenuItem>
+                <MenuItem id="light">Light</MenuItem>
+              </Menu>
+            </Popover>
+          </MenuTrigger> */}
         </div>
       </div>
       <nav

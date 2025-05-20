@@ -1,5 +1,10 @@
 {
   "version": 1,
-  "include": ["/*"],
-  "exclude": ["/favicon.ico", "/build/*"]
+  "include": [
+    "/*"
+  ],
+  "exclude": [
+    "/favicon.ico",
+    "/build/*"
+  ]
 }

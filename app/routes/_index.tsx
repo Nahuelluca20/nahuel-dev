@@ -1,6 +1,7 @@
-import type { MetaFunction } from "@remix-run/cloudflare";
-import { Link } from "@remix-run/react";
-export const meta: MetaFunction = () => {
+import { Link } from "react-router";
+
+import type { Route } from "./+types/_index";
+export const meta: Route.MetaFunction = () => {
   return [
     { title: "Nahuel dev" },
     { name: "description", content: "Welcome web - Nahuel dev" },
