@@ -1,4 +1,4 @@
-import MePNG from "public/me.png?url";
+import MePNG from "/me.png?url";
 import type { Route } from "../about/+types/route";
 
 export const meta: Route.MetaFunction = () => {
