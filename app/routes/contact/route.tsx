@@ -1,10 +1,10 @@
-import { MetaFunction } from "react-router";
 import { Link } from "~/components/ui/Link";
+import type { Route } from "../contact/+types/route";
 
-export const meta: MetaFunction = () => {
+export const meta: Route.MetaFunction = () => {
   return [
     { title: "Contact" },
-    { name: "description", content: "Contact me - Nahuel dev" },
+    { name: "description", content: "Contact me - Loadertsx" },
   ];
 };
 

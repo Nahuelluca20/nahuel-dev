@@ -1,10 +1,10 @@
-import { MetaFunction } from "react-router";
-import MePNG from "public/me.png?url";
+import MePNG from "/me.png?url";
+import type { Route } from "../about/+types/route";
 
-export const meta: MetaFunction = () => {
+export const meta: Route.MetaFunction = () => {
   return [
     { title: "About" },
-    { name: "description", content: "About me - Nahuel dev" },
+    { name: "description", content: "About me - Loadertsx" },
   ];
 };
 
@@ -16,10 +16,10 @@ export default function About() {
         <div className="flex items-center">
           <span className="space-y-5 ">
             <p>
-              Hello, {"I'm"} Nahuel! 👋 {"I'm"} a passionate Frontend Developer
-              dedicated to crafting captivating web experiences. My expertise
-              lies in leveraging cutting-edge technologies, specializing in
-              development with React, Next.js and Remix.
+              Hello, {"I'm"} Loadertsx! 👋 {"I'm"} a passionate Frontend
+              Developer dedicated to crafting captivating web experiences. My
+              expertise lies in leveraging cutting-edge technologies,
+              specializing in development with React, Next.js and Remix.
             </p>
             <p>
               I wield Tailwind CSS to style my creations with both elegance and

@@ -37,7 +37,7 @@ export async function loader({ params, context }: Route.LoaderArgs) {
 
 export const meta = ({ data }: Route.MetaArgs) => {
   return [
-    { title: data?.title || "Nahuel dev" },
+    { title: data?.title || "Loadertsx" },
     { name: "description", content: `${data?.tags}` },
   ];
 };

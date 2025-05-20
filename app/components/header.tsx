@@ -34,7 +34,7 @@ export default function Header({
     <header>
       <div className="relative bg-white dark:bg-[#1F2028] z-50 overflow-hidden max-h-screen mx-auto px-5 py-9 xl:px-36 lg:py-12 flex justify-between items-center w-screen overflow-x-hidden">
         <Link to={"/"} className="text-2xl font-bold">
-          nahuel.luca()
+          loadertsx()
         </Link>
         <nav className="hidden md:flex">
           <ul className="flex space-x-8 font-semibold text-xl">
