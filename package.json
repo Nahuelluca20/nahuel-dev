@@ -24,7 +24,7 @@
     "drizzle-orm": "~0.36.3",
     "fs-extra": "^11.2.0",
     "isbot": "^5.1.27",
-    "lucide-react": "^0.378.0",
+    "lucide-react": "^0.511.0",
     "miniflare": "^3.20240404.0",
     "nprogress": "^0.2.0",
     "prismjs": "^1.29.0",
