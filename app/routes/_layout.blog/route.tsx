@@ -9,7 +9,7 @@ import type { Route } from "../_layout.blog/+types/route";
 export const meta = () => {
   return [
     { title: "Blog" },
-    { name: "description", content: "Blogs - Nahuel dev" },
+    { name: "description", content: "Blogs - Loadertsx" },
   ];
 };
 

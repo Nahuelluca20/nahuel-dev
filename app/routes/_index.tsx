@@ -3,8 +3,8 @@ import { Link } from "react-router";
 import type { Route } from "./+types/_index";
 export const meta: Route.MetaFunction = () => {
   return [
-    { title: "Nahuel dev" },
-    { name: "description", content: "Welcome web - Nahuel dev" },
+    { title: "Loadertsx" },
+    { name: "description", content: "Welcome web - Loadertsx" },
   ];
 };
 
@@ -19,7 +19,7 @@ export default function Index() {
           Creating better web interfaces with excitement and enthusiasms
         </h1>
         <h2 className="text-xl text-[#535661] dark:text-[#a9adc1] font-medium">
-          Nahuel Luca - FrontEnd Developer
+          Loadertsx - FrontEnd Developer
         </h2>
       </div>
       <div className="grid max-w-[300px] md:max-w-full md:flex gap-5 mt-10 text-lg font-semibold">
