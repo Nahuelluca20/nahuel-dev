@@ -5,4 +5,5 @@ export default {
   future: {
     unstable_viteEnvironmentApi: true,
   },
+  prerender: ["/contact", "/about", "/projects"],
 } satisfies Config;

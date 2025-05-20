@@ -1,66 +1,31 @@
-import type { LinksFunction, LoaderFunction } from "react-router";
-import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  useLoaderData,
-} from "react-router";
 import { twMerge } from "tailwind-merge";
 
-import stylesheet from "./tailwind.css?url";
 import Header from "./components/header";
-import { Theme, ThemeProvider, useTheme } from "./utils/theme-provider";
-import { getThemeSession } from "./utils/theme.server";
 import { useState } from "react";
-// import NProgress from "nprogress";
-// import nProgressStyles from "nprogress/nprogress.css?url";
+import "./app.css";
+import type { Route } from "./+types/root";
+import {
+  Meta,
+  Links,
+  ScrollRestoration,
+  Scripts,
+  Outlet,
+  isRouteErrorResponse,
+} from "react-router";
 
-// NProgress.configure({
-//   showSpinner: false,
-//   minimum: 0.1,
-//   easing: "ease",
-//   speed: 500,
-// });
-
-export const links: LinksFunction = () => [
-  { rel: "preload", as: "style", href: stylesheet },
-  // { rel: "preload", as: "style", href: nProgressStyles },
-  { rel: "stylesheet", href: stylesheet },
-  // { rel: "stylesheet", href: nProgressStyles },
+export const links = () => [
+  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap",
+  },
 ];
 
-export type LoaderData = {
-  theme: Theme | null;
-};
-
-export const loader: LoaderFunction = async ({ request }) => {
-  const themeSession = await getThemeSession(request);
-
-  const data: LoaderData = {
-    theme: themeSession.getTheme(),
-  };
-
-  return data;
-};
-
-function App() {
-  const [theme] = useTheme();
+export function Layout({ children }: { children: React.ReactNode }) {
   const [openMenu, setOpenMenu] = useState(false);
 
-  // const navigation = useNavigation();
-
-  // useEffect(() => {
-  //   if (navigation.state === "loading") {
-  //     NProgress.start();
-  //   } else {
-  //     NProgress.done();
-  //   }
-  // }, [navigation.state]);
-
   return (
-    <html lang="en" className={twMerge(theme)}>
+    <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -75,7 +40,7 @@ function App() {
       >
         <Header openMenu={openMenu} setOpenMenu={setOpenMenu} />
         <div className="max-w-[1280px] mx-auto mt-10 px-5 lg:px-[100px]">
-          <Outlet />
+          {children}
         </div>
         <ScrollRestoration />
         <Scripts />
@@ -84,11 +49,35 @@ function App() {
   );
 }
 
-export default function AppWithProviders() {
-  const data = useLoaderData<LoaderData>();
+export default function App() {
+  return <Outlet />;
+}
+
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  let message = "Oops!";
+  let details = "An unexpected error occurred.";
+  let stack: string | undefined;
+
+  if (isRouteErrorResponse(error)) {
+    message = error.status === 404 ? "404" : "Error";
+    details =
+      error.status === 404
+        ? "The requested page could not be found."
+        : error.statusText || details;
+  } else if (import.meta.env.DEV && error && error instanceof Error) {
+    details = error.message;
+    stack = error.stack;
+  }
+
   return (
-    <ThemeProvider specifiedTheme={data.theme}>
-      <App />
-    </ThemeProvider>
+    <main className="pt-16 p-4 container mx-auto">
+      <h1>{message}</h1>
+      <p>{details}</p>
+      {stack && (
+        <pre className="w-full p-4 overflow-x-auto">
+          <code>{stack}</code>
+        </pre>
+      )}
+    </main>
   );
 }

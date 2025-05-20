@@ -1,6 +1,7 @@
-import type { MetaFunction } from "react-router";
 import { Link } from "react-router";
-export const meta: MetaFunction = () => {
+
+import type { Route } from "./+types/_index";
+export const meta: Route.MetaFunction = () => {
   return [
     { title: "Nahuel dev" },
     { name: "description", content: "Welcome web - Nahuel dev" },
