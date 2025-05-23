@@ -2,20 +2,21 @@ import { data, useNavigate } from "react-router";
 
 import { MarkdownView } from "~/components/markdown";
 import { markdownParser } from "~/utils/md.server";
-import "./prismjs.css";
+import styles from "./prismjs.css";
 import { ArrowLeft } from "lucide-react";
 import { getBlogPost } from "./queries.server";
 import type { Route } from "../blog.$slug/+types/route";
+import database from "~/db";
 interface IBlog {
   content: string | null;
   tags: string | null;
   title: string | null;
 }
 
-// export const links = () => [
-//   { rel: "preload", as: "style", href: styles },
-//   { rel: "stylesheet", href: styles },
-// ];
+export const links = () => [
+  { rel: "preload", as: "style", href: styles },
+  { rel: "stylesheet", href: styles },
+];
 
 export function headers(_: Route.HeadersArgs) {
   return {
@@ -23,11 +24,10 @@ export function headers(_: Route.HeadersArgs) {
   };
 }
 
-export async function loader({ params, context }: Route.LoaderArgs) {
+export async function loader({ params }: Route.LoaderArgs) {
   const slug = params.slug;
-  const { BLOG_DB } = context.cloudflare.env;
 
-  const result: IBlog[] = await getBlogPost(BLOG_DB, String(slug));
+  const result: IBlog[] = await getBlogPost(String(slug));
   const content = result[0]?.content && markdownParser(result[0].content);
   const tags = result[0]?.tags;
   const title = result[0]?.title;

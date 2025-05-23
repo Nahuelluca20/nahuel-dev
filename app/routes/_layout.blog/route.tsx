@@ -19,9 +19,8 @@ export function headers(_: Route.HeadersArgs) {
   };
 }
 
-export const loader = async ({ context }: Route.LoaderArgs) => {
-  const { BLOG_DB } = context.cloudflare.env;
-  const results = getAllBlogs(BLOG_DB);
+export const loader = async () => {
+  const results = getAllBlogs();
 
   return data({ results });
 };
