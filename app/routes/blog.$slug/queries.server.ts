@@ -1,6 +1,5 @@
 import { eq } from "drizzle-orm";
-import { post } from "~/db/schema";
-import type { Database } from "~/db";
+import { post } from "~/db/schemas/post";
 import { env } from "cloudflare:workers";
 import database from "~/db";
 

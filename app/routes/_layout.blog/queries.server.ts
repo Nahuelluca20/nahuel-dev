@@ -1,4 +1,4 @@
-import { post } from "~/db/schema";
+import { post } from "~/db/schemas/post";
 import { sql } from "drizzle-orm";
 import { env } from "cloudflare:workers";
 import database from "~/db";

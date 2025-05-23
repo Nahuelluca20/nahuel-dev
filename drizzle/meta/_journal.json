@@ -8,6 +8,13 @@
       "when": 1712272896436,
       "tag": "0000_tense_chronomancer",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1748003754999,
+      "tag": "0001_mighty_scarecrow",
+      "breakpoints": true
     }
   ]
 }
