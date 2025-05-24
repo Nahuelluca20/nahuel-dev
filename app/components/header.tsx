@@ -43,6 +43,7 @@ export default function Header({
                 <Link
                   to={link.href}
                   target={link.blank}
+                  viewTransition
                   className={twMerge(
                     "block pb-1",
                     link.href === `/${path}`

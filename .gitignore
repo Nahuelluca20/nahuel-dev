@@ -14,4 +14,5 @@ wrangler.toml
 /build/server
 .react-router/
 .llm-context/
+drizzle.config.local.ts
 bun.lockb

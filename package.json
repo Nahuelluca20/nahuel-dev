@@ -15,7 +15,9 @@
     "postinstall": "npm run cf-typegen",
     "db:generate": "dotenv -- drizzle-kit generate",
     "db:migrate": "wrangler d1 migrations apply --local BLOG_DB",
-    "db:migrate-production": "dotenv -- drizzle-kit migrate"
+    "db:migrate-production": "dotenv -- drizzle-kit migrate",
+    "drizzle:local": "drizzle-kit studio --config=drizzle.config.local.ts",
+    "drizzle:production": "drizzle-kit studio --config=drizzle.config.ts"
   },
   "dependencies": {
     "@markdoc/markdoc": "^0.4.0",
@@ -55,6 +57,7 @@
     "@types/prismjs": "^1.26.3",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "better-sqlite3": "^11.10.0",
     "dotenv-cli": "^8.0.0",
     "drizzle-kit": "~0.28.1",
     "tailwindcss": "^4.1.4",

@@ -26,6 +26,7 @@ export default function Index() {
         <Link
           className="hover:ring-4 border-2 text-white dark:text-black bg-black dark:bg-white rounded-full py-6 px-11 border-[#e6e9ee]"
           to="/blog"
+          viewTransition
         >
           Read the blog
         </Link>
@@ -33,6 +34,7 @@ export default function Index() {
         <Link
           className="hover:ring-4 border-2 rounded-full py-6 px-11 border-[#e6e9ee]"
           to="/projects"
+          viewTransition
         >
           See projects
         </Link>
