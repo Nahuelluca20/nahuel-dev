@@ -6,6 +6,7 @@ import { getAllBlogs } from "./queries.server";
 import ListSkeleton from "~/components/list-skeleton";
 import type { Route } from "../_layout.blog/+types/route";
 import { Auth } from "~/lib/auth/auth.server";
+import database from "~/db";
 
 export const meta = () => {
   return [
@@ -29,12 +30,10 @@ export const loader = async ({ request, context }: Route.LoaderArgs) => {
   console.log(session);
   console.log(session?.user);
 
-  const results = getAllBlogs(context.cloudflare.env.BLOG_DB);
+  const db = database(context.cloudflare.env.BLOG_DB);
+  const results = getAllBlogs(db);
 
   return data({ results });
-};
-export const handle = {
-  its: "all yours",
 };
 
 export default function Blog({ loaderData }: Route.ComponentProps) {

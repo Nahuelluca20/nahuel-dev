@@ -5,6 +5,7 @@ import { markdownParser } from "~/utils/md.server";
 import { ArrowLeft } from "lucide-react";
 import { getBlogPost } from "./queries.server";
 import type { Route } from "../blog.$slug/+types/route";
+import database from "~/db";
 interface IBlog {
   content: string | null;
   tags: string | null;
@@ -24,9 +25,9 @@ export function headers(_: Route.HeadersArgs) {
 
 export async function loader({ params, context }: Route.LoaderArgs) {
   const slug = params.slug;
-  const dbEnv = context.cloudflare.env.BLOG_DB;
 
-  const result: IBlog[] = await getBlogPost(String(slug), dbEnv);
+  const db = database(context.cloudflare.env.BLOG_DB);
+  const result: IBlog[] = await getBlogPost(String(slug), db);
   const content = result[0]?.content && markdownParser(result[0].content);
   const tags = result[0]?.tags;
   const title = result[0]?.title;

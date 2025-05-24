@@ -1,9 +1,8 @@
 import { post } from "~/db/schemas/post";
 import { sql } from "drizzle-orm";
-import database from "~/db";
+import type { Database } from "~/db";
 
-export async function getAllBlogs(dbEnv: D1Database) {
-  const db = database(dbEnv);
+export async function getAllBlogs(db: Database) {
   return await db
     .select({
       date: post.date,
