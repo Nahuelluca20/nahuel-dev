@@ -16,7 +16,7 @@ const projectsItems = [
       "A RAG system using an LLM that responds according to the user's questions.",
     deployLink: "https://nahuel-dev.pages.dev/blog/how-create-rag-system",
     codeLink: "https://github.com/Nahuelluca20/ollama-techstacks-api",
-    tags: ["Pyhon", "FastAPI", "LLMs", "Ollama"],
+    tags: ["Python", "FastAPI", "LLMs", "Ollama"],
   },
   {
     title: "Trello clone",
@@ -55,7 +55,7 @@ const projectsItems = [
 export const meta: MetaFunction = () => {
   return [
     { title: "Project" },
-    { name: "description", content: "My projexts - Nahuel dev" },
+    { name: "description", content: "My projects - Nahuel dev" },
   ];
 };
 
