@@ -3,6 +3,7 @@ import type { RenderableTreeNodes } from "@markdoc/markdoc";
 import markdoc from "@markdoc/markdoc";
 import * as React from "react";
 import prism from "prismjs";
+import "prismjs/components/prism-python";
 
 type Props = {
   content: RenderableTreeNodes;

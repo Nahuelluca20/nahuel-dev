@@ -12,7 +12,7 @@ export default function Index() {
   return (
     <section
       className="grid items-center justify-center pt-10 md:pt-20 pb-5"
-      style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}
+      // style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}
     >
       <div className="space-y-2">
         <h1 className="text-5xl max-w-[800px]">

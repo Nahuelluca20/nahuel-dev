@@ -15,6 +15,20 @@
       "when": 1748003754999,
       "tag": "0001_mighty_scarecrow",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1748704521317,
+      "tag": "0002_solid_madame_hydra",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1748704850989,
+      "tag": "0003_eager_scourge",
+      "breakpoints": true
     }
   ]
 }

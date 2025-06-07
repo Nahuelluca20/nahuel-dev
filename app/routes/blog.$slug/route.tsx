@@ -50,7 +50,7 @@ export default function BlogId({ loaderData }: Route.ComponentProps) {
     <div className="lg:min-w-[800px] lg:max-w-[800px] mx-auto prose prose-md lg:prose-lg">
       <button
         type="button"
-        className="flex mb-10 dark:text-white items-center font-bold gap-2 z-0 transition-transform transform hover:-translate-x-1 focus:outline-none"
+        className="flex mb-10 dark:text-white items-center font-bold gap-2 z-0 transition-transform transform hover:-translate-x-1 focus:outline-none cursor-pointer"
         onClick={() => {
           navigate("/blog");
         }}
