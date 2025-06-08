@@ -13,8 +13,8 @@ interface IBlog {
 }
 
 export const links = () => [
-  { rel: "preload", as: "style", href: "/app/routes/blog.$slug/prismjs.css" },
-  { rel: "stylesheet", href: "/app/routes/blog.$slug/prismjs.css" },
+  { rel: "preload", as: "style", href: "/app/styles/prismjs.css" },
+  { rel: "stylesheet", href: "/app/styles/prismjs.css" },
 ];
 
 export function headers(_: Route.HeadersArgs) {
