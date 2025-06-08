@@ -1,8 +1,6 @@
 {
-  "version": "5",
+  "version": "6",
   "dialect": "sqlite",
-  "id": "16624756-eedb-49a2-b894-12b66e740114",
-  "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "post": {
       "name": "post",
@@ -46,13 +44,16 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "checkConstraints": {}
     }
   },
   "enums": {},
   "_meta": {
-    "schemas": {},
     "tables": {},
     "columns": {}
-  }
+  },
+  "id": "16624756-eedb-49a2-b894-12b66e740114",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "views": {}
 }

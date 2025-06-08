@@ -5,6 +5,8 @@ import { Suspense } from "react";
 import { getAllBlogs } from "./queries.server";
 import ListSkeleton from "~/components/list-skeleton";
 import type { Route } from "../_layout.blog/+types/route";
+import { Auth } from "~/lib/auth/auth.server";
+import database from "~/db";
 
 export const meta = () => {
   return [
@@ -19,15 +21,24 @@ export function headers(_: Route.HeadersArgs) {
   };
 }
 
-export const loader = async ({ context }: Route.LoaderArgs) => {
-  const { BLOG_DB } = context.cloudflare.env;
-  const results = getAllBlogs(BLOG_DB);
+export const loader = async ({ request, context }: Route.LoaderArgs) => {
+  const authManager = await Auth.authManager(context.cloudflare.env.BLOG_DB);
+  const session = await authManager.api.getSession({
+    headers: request.headers,
+  });
+
+  console.log(session);
+  console.log(session?.user);
+
+  const db = database(context.cloudflare.env.BLOG_DB);
+  const results = getAllBlogs(db);
 
   return data({ results });
 };
 
 export default function Blog({ loaderData }: Route.ComponentProps) {
   const { results } = loaderData;
+
   return (
     <section className="grid gap-2 w-full max-w-[700px] mx-auto">
       <h1 className="text-3xl font-semibold">Blog, tutorials and more...</h1>

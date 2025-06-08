@@ -1,9 +1,8 @@
 import { eq } from "drizzle-orm";
-import { drizzle } from "drizzle-orm/d1";
-import { post } from "~/db/schema";
+import { post } from "~/db/schemas/post";
+import type { Database } from "~/db";
 
-export async function getBlogPost(env: D1Database, slug: string) {
-  const db = drizzle(env);
+export async function getBlogPost(slug: string, db: Database) {
   return await db
     .select({
       tags: post.tags,

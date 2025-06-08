@@ -20,11 +20,7 @@ export default function Header({
     { href: "/projects", text: "Projects", blank: "" },
     { href: "/about", text: "About me", blank: "" },
     { href: "/contact", text: "Contact me", blank: "" },
-    {
-      href: "https://notes-quartz-c54.pages.dev/",
-      text: "Notes",
-      blank: "blank",
-    },
+    { href: "/notes", text: "Notes", blank: "" },
   ];
 
   const location = useLocation();
@@ -43,6 +39,7 @@ export default function Header({
                 <Link
                   to={link.href}
                   target={link.blank}
+                  viewTransition
                   className={twMerge(
                     "block pb-1",
                     link.href === `/${path}`

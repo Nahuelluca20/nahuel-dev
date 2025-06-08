@@ -1,10 +1,8 @@
-import { drizzle } from "drizzle-orm/d1";
-import { post } from "~/db/schema";
+import { post } from "~/db/schemas/post";
 import { sql } from "drizzle-orm";
+import type { Database } from "~/db";
 
-export async function getAllBlogs(env: D1Database) {
-  const db = drizzle(env);
-
+export async function getAllBlogs(db: Database) {
   return await db
     .select({
       date: post.date,
