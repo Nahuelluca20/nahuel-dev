@@ -5,17 +5,13 @@ import { markdownParser } from "~/utils/md.server";
 import { ArrowLeft } from "lucide-react";
 import { getBlogPost } from "./queries.server";
 import type { Route } from "../blog.$slug/+types/route";
+import "../../styles/prismjs.css";
 import database from "~/db";
 interface IBlog {
   content: string | null;
   tags: string | null;
   title: string | null;
 }
-
-export const links = () => [
-  { rel: "preload", as: "style", href: "/app/styles/prismjs.css" },
-  { rel: "stylesheet", href: "/app/styles/prismjs.css" },
-];
 
 export function headers(_: Route.HeadersArgs) {
   return {

@@ -5,11 +5,7 @@ import type { Route } from "../_.notes.$slug/+types/route";
 import database from "~/db";
 import { getNote, getRelatedNotes } from "./queries.server";
 import { markdownParser } from "~/utils/md.server";
-
-export const links = () => [
-  { rel: "preload", as: "style", href: "/app/styles/prismjs.css" },
-  { rel: "stylesheet", href: "/app/styles/prismjs.css" },
-];
+import "../../styles/prismjs.css";
 
 export async function loader({ params, context }: Route.LoaderArgs) {
   const db = database(context.cloudflare.env.BLOG_DB);
