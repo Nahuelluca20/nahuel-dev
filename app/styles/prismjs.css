@@ -2,6 +2,8 @@
 https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+jsx+tsx+typescript+python */
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 article > p {
   @apply text-[#535661] dark:text-[#a9adc1] font-medium;
 }

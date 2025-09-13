@@ -1,10 +1,8 @@
 import { Link, useLocation } from "react-router";
 import { Moon, Sun, Menu as MenuIcon, X } from "lucide-react";
-// import { Button } from "./ui/Button";
-// import { Menu, MenuItem } from "./ui/Menu";
-// import { MenuTrigger, Popover } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
-// import { Theme, useTheme } from "~/utils/theme-provider";
+import { Theme, useTheme } from "~/utils/theme-provider";
+import { Button } from "./ui/Button";
 
 export default function Header({
   setOpenMenu,
@@ -13,7 +11,7 @@ export default function Header({
   setOpenMenu: (open: boolean) => void;
   openMenu: boolean;
 }) {
-  // const [theme, setTheme] = useTheme();
+  const [theme, setTheme] = useTheme();
 
   const links = [
     { href: "/blog", text: "Blog", blank: "" },
@@ -28,8 +26,8 @@ export default function Header({
 
   return (
     <header>
-      <div className="relative bg-white dark:bg-[#1F2028] z-50 overflow-hidden max-h-screen mx-auto px-5 py-9 xl:px-36 lg:py-12 flex justify-between items-center w-screen overflow-x-hidden">
-        <Link to={"/"} className="text-2xl font-bold">
+      <div className="relative  z-50 overflow-hidden max-h-screen mx-auto px-5 py-9 xl:px-36 lg:py-12 flex justify-between items-center w-screen overflow-x-hidden">
+        <Link to={"/"} className="text-2xl font-bold flex-1">
           loadertsx()
         </Link>
         <nav className="hidden md:flex">
@@ -61,7 +59,22 @@ export default function Header({
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2">
+          <Button
+            variant="secondary"
+            aria-label="Toggle theme"
+            className="px-2 ml-6 cursor-pointer transition-colors"
+            onPress={() => {
+              setTheme(theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT);
+            }}
+          >
+            {theme === Theme.DARK ? (
+              <Moon className="w-5 h-5" />
+            ) : (
+              <Sun className="w-5 h-5" />
+            )}
+          </Button>
+
           <button
             aria-label="Open menu"
             type="button"
@@ -74,42 +87,6 @@ export default function Header({
               <MenuIcon className="w-8 h-8" />
             )}
           </button>
-
-          {/* <MenuTrigger>
-            <Button aria-label="set theme" className="px-2" variant="secondary">
-              {Theme.DARK === theme ? (
-                <Moon className="w-5 h-5" />
-              ) : (
-                <Sun className="w-5 h-5" />
-              )}
-            </Button>
-            <Popover>
-              <Menu
-                onAction={() => {
-                  setTheme((prevTheme) =>
-                    prevTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
-                  );
-                  if (theme === Theme.DARK) {
-                    document
-                      .querySelector("html")
-                      ?.style.setProperty("color-scheme", "light");
-                  } else {
-                    document
-                      .querySelector("html")
-                      ?.style.setProperty("color-scheme", "dark");
-                  }
-                }}
-                disabledKeys={theme === Theme.LIGHT ? ["light"] : ["dark"]}
-                onClose={() => setOpenMenu(false)}
-                onScroll={function Ya() {}}
-                onSelectionChange={function Ya() {}}
-                placement="bottom right"
-              >
-                <MenuItem id="dark">Dark</MenuItem>
-                <MenuItem id="light">Light</MenuItem>
-              </Menu>
-            </Popover>
-          </MenuTrigger> */}
         </div>
       </div>
       <nav
@@ -130,7 +107,7 @@ export default function Header({
             </li>
           ))}
         </ul>
-        <hr className="h-1 border-t" />
+        <div className="px-5 py-6 border-t"></div>
       </nav>
     </header>
   );

@@ -3,19 +3,25 @@
 @plugin "tailwindcss-react-aria-components";
 @plugin "tailwindcss-animate";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Mona Sans", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 html {
-  color-scheme: normal;
   scroll-behavior: smooth;
 }
 
+html.dark {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
 body {
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-    @apply text-white;
-  }
+  @apply transition-colors duration-200 dark:text-white dark:bg-[#1F2028];
 }

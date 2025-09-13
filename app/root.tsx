@@ -12,6 +12,7 @@ import {
   Outlet,
   isRouteErrorResponse,
 } from "react-router";
+import { ThemeProvider } from "./utils/theme-provider";
 
 export const links = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -34,14 +35,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body
         className={twMerge(
-          "overflow-x-hidden dark:bg-[#1F2028]  ",
+          "overflow-x-hidden",
           openMenu ? "overflow-hidden max-h-screen" : "overflow-x-hidden"
         )}
       >
-        <Header openMenu={openMenu} setOpenMenu={setOpenMenu} />
-        <div className="max-w-[1280px] mx-auto mt-10 px-5 lg:px-[100px]">
-          {children}
-        </div>
+        <ThemeProvider>
+          <Header openMenu={openMenu} setOpenMenu={setOpenMenu} />
+          <div className="max-w-[1280px] mx-auto mt-10 px-5 lg:px-[100px]">
+            {children}
+          </div>
+        </ThemeProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

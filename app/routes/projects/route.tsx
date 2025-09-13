@@ -14,7 +14,7 @@ const projectsItems = [
     title: "RAG LLM System",
     content:
       "A RAG system using an LLM that responds according to the user's questions.",
-    deployLink: "https://nahuel-dev.pages.dev/blog/how-create-rag-system",
+    deployLink: "https://loadertsx.com/blog/how-create-rag-system",
     codeLink: "https://github.com/Nahuelluca20/ollama-techstacks-api",
     tags: ["Pyhon", "FastAPI", "LLMs", "Ollama"],
   },
