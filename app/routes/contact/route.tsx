@@ -23,12 +23,12 @@ export default function contact() {
           ,{" "}
           <Link
             href="https://www.linkedin.com/in/nahueldevelop/"
-            target="__blank"
+            target="_blank"
           >
             LinkedIn
           </Link>{" "}
           or{" "}
-          <Link href="https://github.com/Nahuelluca20" target="__blank">
+          <Link href="https://github.com/Nahuelluca20" target="_blank">
             Github
           </Link>
           . {"I'll"} get back to you as soon as possible.

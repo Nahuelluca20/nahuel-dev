@@ -23,14 +23,14 @@ export default function CardProject({
         <Heading className="font-bold text-xl">{title}</Heading>
         <div className="flex gap-2 items-center">
           <TooltipTrigger delay={0}>
-            <Link href={deployLink} target="__black">
+            <Link href={deployLink} target="_blank">
               <Globe className="h-5 w-5" />
             </Link>
             <Tooltip onOpenChange={function Ya() {}}>Web</Tooltip>
           </TooltipTrigger>
 
           <TooltipTrigger delay={0}>
-            <Link href={codeLink} target="__black">
+            <Link href={codeLink} target="_blank">
               <Github className="h-5 w-5" />{" "}
             </Link>
             <Tooltip onOpenChange={function Ya() {}}>Code</Tooltip>
