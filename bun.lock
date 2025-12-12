@@ -1,5 +1,6 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "nahuel-dev",
@@ -25,8 +26,9 @@
         "react-aria-components": "^1.2.0",
         "react-dom": "^19.2.1",
         "react-router": "^7.5.3",
-        "react-server-dom-parcel": "^19.2.1",
-        "react-server-dom-webpack": "^19.2.1",
+        "react-server-dom-parcel": "^19.2.3",
+        "react-server-dom-turbopack": "^19.2.3",
+        "react-server-dom-webpack": "^19.2.3",
         "remix-utils": "^8.7.0",
         "tailwind-merge": "^2.3.0",
         "tailwind-variants": "^0.2.1",
@@ -1202,9 +1204,11 @@
 
     "react-router": ["react-router@7.6.0", "", { "dependencies": { "cookie": "^1.0.1", "set-cookie-parser": "^2.6.0" }, "peerDependencies": { "react": ">=18", "react-dom": ">=18" }, "optionalPeers": ["react-dom"] }, "sha512-GGufuHIVCJDbnIAXP3P9Sxzq3UUsddG3rrI3ut1q6m0FI6vxVBF3JoPQ38+W/blslLH4a5Yutp8drkEpXoddGQ=="],
 
-    "react-server-dom-parcel": ["react-server-dom-parcel@19.2.1", "", { "peerDependencies": { "react": "^19.2.1", "react-dom": "^19.2.1" } }, "sha512-/pYJSIjVZy1sZLHlovmItuMqVl8z57jURTPn+sTCWotIm1orCodjFkBiBfY1zWKHa48d406Pble5mlr7tU3lfg=="],
+    "react-server-dom-parcel": ["react-server-dom-parcel@19.2.3", "", { "peerDependencies": { "react": "^19.2.3", "react-dom": "^19.2.3" } }, "sha512-vutWjo615Ks9erf5TmgMSJN0NsZuxuBfgt/O2ZbZoUUXGtqiwVppz0Dy57tmYkx/hAd1DJx1ZwrZW/ThyUeVaQ=="],
 
-    "react-server-dom-webpack": ["react-server-dom-webpack@19.2.1", "", { "dependencies": { "acorn-loose": "^8.3.0", "neo-async": "^2.6.1", "webpack-sources": "^3.2.0" }, "peerDependencies": { "react": "^19.2.1", "react-dom": "^19.2.1", "webpack": "^5.59.0" } }, "sha512-6z3FuEtZ7wVWyPYRhKKRo4TF7IyQ7XrQZRW1fTjzK2mLVmcv7xJtoANSixaUJ+EFjCh2ekNOaBSoI9spiMSnNA=="],
+    "react-server-dom-turbopack": ["react-server-dom-turbopack@19.2.3", "", { "dependencies": { "acorn-loose": "^8.3.0", "neo-async": "^2.6.1" }, "peerDependencies": { "react": "^19.2.3", "react-dom": "^19.2.3" } }, "sha512-WMU3jSmjdsDKsKJ2dS+Nv1rW8Jd/4Gizlrsj2iMUDzrbflMRMuuPf7d/HiE1WaFlY2ODsjr36ZAi4RLo8ATlSQ=="],
+
+    "react-server-dom-webpack": ["react-server-dom-webpack@19.2.3", "", { "dependencies": { "acorn-loose": "^8.3.0", "neo-async": "^2.6.1", "webpack-sources": "^3.2.0" }, "peerDependencies": { "react": "^19.2.3", "react-dom": "^19.2.3", "webpack": "^5.59.0" } }, "sha512-ifo7aqqdNJyV6U2zuvvWX4rRQ51pbleuUFNG7ZYhIuSuWZzQPbfmYv11GNsyJm/3uGNbt8buJ9wmoISn/uOAfw=="],
 
     "react-stately": ["react-stately@3.31.1", "", { "dependencies": { "@react-stately/calendar": "^3.5.1", "@react-stately/checkbox": "^3.6.5", "@react-stately/collections": "^3.10.7", "@react-stately/combobox": "^3.8.4", "@react-stately/data": "^3.11.4", "@react-stately/datepicker": "^3.9.4", "@react-stately/dnd": "^3.3.1", "@react-stately/form": "^3.0.3", "@react-stately/list": "^3.10.5", "@react-stately/menu": "^3.7.1", "@react-stately/numberfield": "^3.9.3", "@react-stately/overlays": "^3.6.7", "@react-stately/radio": "^3.10.4", "@react-stately/searchfield": "^3.5.3", "@react-stately/select": "^3.6.4", "@react-stately/selection": "^3.15.1", "@react-stately/slider": "^3.5.4", "@react-stately/table": "^3.11.8", "@react-stately/tabs": "^3.6.6", "@react-stately/toggle": "^3.7.4", "@react-stately/tooltip": "^3.4.9", "@react-stately/tree": "^3.8.1", "@react-types/shared": "^3.23.1" }, "peerDependencies": { "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0" } }, "sha512-wuq673NHkYSdoceGryjtMJJvB9iQgyDkQDsnTN0t2v91pXjGDsN/EcOvnUrxXSBtY9eLdIw74R54z9GX5cJNEg=="],
 
