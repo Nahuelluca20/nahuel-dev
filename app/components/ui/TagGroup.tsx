@@ -17,35 +17,34 @@ import { Description, Label } from "./Field";
 import { focusRing } from "./utils";
 
 const colors = {
-  gray: "bg-gray-100 text-gray-600 border-gray-200 hover:border-gray-300 dark:bg-zinc-700 dark:text-zinc-300 dark:border-zinc-600 dark:hover:border-zinc-500",
-  green:
-    "bg-green-100 text-green-700 border-green-200 hover:border-green-300 dark:bg-green-300/20 dark:text-green-400 dark:border-green-300/10 dark:hover:border-green-300/20",
-  yellow:
-    "bg-yellow-100 text-yellow-700 border-yellow-200 hover:border-yellow-300 dark:bg-yellow-300/20 dark:text-yellow-400 dark:border-yellow-300/10 dark:hover:border-yellow-300/20",
-  blue: "bg-blue-100 text-blue-700 border-blue-200 hover:border-blue-300 dark:bg-blue-400/20 dark:text-blue-300 dark:border-blue-400/10 dark:hover:border-blue-400/20",
+  default:
+    "bg-[var(--color-border)] dark:bg-[var(--color-dark-border)] text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] border-transparent",
+  accent:
+    "bg-[var(--color-accent)]/10 dark:bg-[var(--color-dark-accent)]/10 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] border-[var(--color-accent)]/20 dark:border-[var(--color-dark-accent)]/20",
+  surface:
+    "bg-[var(--color-surface)] dark:bg-[var(--color-dark-surface)] text-[var(--color-text)] dark:text-[var(--color-dark-text)] border-[var(--color-border)] dark:border-[var(--color-dark-border)]",
 };
 
 type Color = keyof typeof colors;
-const ColorContext = createContext<Color>("gray");
+const ColorContext = createContext<Color>("default");
 
 const tagStyles = tv({
   extend: focusRing,
-  base: "transition cursor-default text-xs rounded-full border px-3 py-0.5 flex items-center max-w-fit gap-1",
+  base: "transition cursor-default text-xs rounded-full border px-3 py-1 flex items-center max-w-fit gap-1",
   variants: {
     color: {
-      gray: "",
-      green: "",
-      yellow: "",
-      blue: "",
+      default: "",
+      accent: "",
+      surface: "",
     },
     allowsRemoving: {
       true: "pr-1",
     },
     isSelected: {
-      true: "bg-blue-600 text-white border-transparent forced-colors:bg-[Highlight] forced-colors:text-[HighlightText] forced-color-adjust-none",
+      true: "bg-[var(--color-text)] dark:bg-[var(--color-dark-text)] text-[var(--color-bg)] dark:text-[var(--color-dark-bg)] border-transparent forced-colors:bg-[Highlight] forced-colors:text-[HighlightText] forced-color-adjust-none",
     },
     isDisabled: {
-      true: "bg-gray-100 text-gray-300 forced-colors:text-[GrayText]",
+      true: "opacity-40",
     },
   },
   compoundVariants: (Object.keys(colors) as Color[]).map((color) => ({
@@ -83,11 +82,11 @@ export function TagGroup<T extends object>({
       className={twMerge("flex flex-col gap-1", props.className)}
     >
       <Label>{label}</Label>
-      <ColorContext.Provider value={props.color || "gray"}>
+      <ColorContext.Provider value={props.color || "default"}>
         <TagList
           items={items}
           renderEmptyState={renderEmptyState}
-          className="flex flex-wrap gap-1"
+          className="flex flex-wrap gap-1.5"
         >
           {children}
         </TagList>

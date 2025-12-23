@@ -7,22 +7,27 @@ import { tv } from "tailwind-variants";
 import { focusRing } from "./utils";
 
 export interface ButtonProps extends RACButtonProps {
-  variant?: "primary" | "secondary" | "destructive" | "icon";
+  variant?: "primary" | "secondary" | "ghost" | "accent" | "icon";
 }
 
 const button = tv({
   extend: focusRing,
-  base: "px-5 py-2 text-sm text-center transition rounded-lg border border-black/10 dark:border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] dark:shadow-none cursor-default",
+  base: "px-5 py-2.5 text-sm font-medium tracking-wide text-center transition-all duration-200 rounded-full cursor-default",
   variants: {
     variant: {
-      primary: "bg-blue-600 hover:bg-blue-700 pressed:bg-blue-800 text-white",
+      primary:
+        "bg-[var(--color-text)] dark:bg-[var(--color-dark-text)] text-[var(--color-bg)] dark:text-[var(--color-dark-bg)] hover:opacity-90 pressed:opacity-80",
       secondary:
-        "bg-gray-100 hover:bg-gray-200 pressed:bg-gray-300 text-gray-800 dark:bg-zinc-600 dark:hover:bg-zinc-500 dark:pressed:bg-zinc-400 dark:text-zinc-100",
-      destructive: "bg-red-700 hover:bg-red-800 pressed:bg-red-900 text-white",
-      icon: "border-0 p-1 flex items-center justify-center text-gray-600 hover:bg-black/[5%] pressed:bg-black/10 dark:text-zinc-400 dark:hover:bg-white/10 dark:pressed:bg-white/20 disabled:bg-transparent",
+        "border border-[var(--color-border-strong)] dark:border-[var(--color-dark-border-strong)] hover:border-[var(--color-text)] dark:hover:border-[var(--color-dark-text)] pressed:bg-[var(--color-surface)] dark:pressed:bg-[var(--color-dark-surface)]",
+      ghost:
+        "hover:bg-[var(--color-surface)] dark:hover:bg-[var(--color-dark-surface)] pressed:bg-[var(--color-border)] dark:pressed:bg-[var(--color-dark-border)]",
+      accent:
+        "bg-[var(--color-accent)] dark:bg-[var(--color-dark-accent)] text-white dark:text-[var(--color-dark-bg)] hover:bg-[var(--color-accent-hover)] dark:hover:bg-[var(--color-dark-accent-hover)] pressed:opacity-90",
+      icon:
+        "border-0 p-1.5 flex items-center justify-center text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] hover:bg-[var(--color-surface)] dark:hover:bg-[var(--color-dark-surface)] pressed:bg-[var(--color-border)] dark:pressed:bg-[var(--color-dark-border)]",
     },
     isDisabled: {
-      true: "bg-gray-100 dark:bg-zinc-800 text-gray-300 dark:text-zinc-600 forced-colors:text-[GrayText] border-black/5 dark:border-white/5",
+      true: "opacity-40 cursor-not-allowed",
     },
   },
   defaultVariants: {

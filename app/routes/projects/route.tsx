@@ -16,7 +16,7 @@ const projectsItems = [
       "A RAG system using an LLM that responds according to the user's questions.",
     deployLink: "https://loadertsx.com/blog/how-create-rag-system",
     codeLink: "https://github.com/Nahuelluca20/ollama-techstacks-api",
-    tags: ["Pyhon", "FastAPI", "LLMs", "Ollama"],
+    tags: ["Python", "FastAPI", "LLMs", "Ollama"],
   },
   {
     title: "Trello clone",
@@ -32,7 +32,7 @@ const projectsItems = [
       "WhosIn is an app to create events and have your friends confirm their presence.",
     deployLink: "https://whos-in-sage.vercel.app/",
     codeLink: "https://github.com/Nahuelluca20/WhosIn-",
-    tags: ["Nextjs", "Prisma", "Clerk"],
+    tags: ["Next.js", "Prisma", "Clerk"],
   },
   {
     title: "Hacker News Clone",
@@ -54,20 +54,29 @@ const projectsItems = [
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Project" },
-    { name: "description", content: "My projexts - Nahuel dev" },
+    { title: "Projects - Nahuel Luca" },
+    { name: "description", content: "A selection of projects I've built" },
   ];
 };
 
-export default function projects() {
+export default function Projects() {
   return (
-    <section className="max-w-[900px] mx-auto">
-      <h1 className="text-2xl mb-2 font-bold">Projects</h1>
-      <h3 className="text-lg text-[#535661] dark:text-[#a9adc1] font-medium">
-        Here are some of the projects I have worked on.
-      </h3>
-      <div className="flex flex-wrap gap-4 py-5">
-        {projectsItems.map((project) => (
+    <section className="max-w-3xl mx-auto pb-16">
+      {/* Header */}
+      <div className="mb-12">
+        <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] mb-3">
+          Selected Work
+        </p>
+        <h1 className="text-3xl md:text-4xl font-serif mb-4">Projects</h1>
+        <p className="text-lg text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] leading-relaxed">
+          A collection of products and experiments I've built. Each one taught
+          me something new about crafting better software.
+        </p>
+      </div>
+
+      {/* Projects Grid */}
+      <div className="grid gap-6 sm:grid-cols-2">
+        {projectsItems.map((project, index) => (
           <CardProject
             key={project.title}
             title={project.title}
@@ -75,6 +84,7 @@ export default function projects() {
             deployLink={project.deployLink}
             codeLink={project.codeLink}
             tags={project.tags}
+            index={index}
           />
         ))}
       </div>
