@@ -30,7 +30,7 @@ export default function Header({
           to="/"
           className="font-serif text-xl tracking-tight transition-colors hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)]"
         >
-          nahuel.dev
+          loader.tsx
         </Link>
 
         {/* Desktop Navigation */}
