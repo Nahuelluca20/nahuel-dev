@@ -16,9 +16,9 @@ const styles = tv({
   variants: {
     variant: {
       primary:
-        "text-blue-600 dark:text-blue-500 underline decoration-blue-600/60 hover:decoration-blue-600 dark:decoration-blue-500/60 dark:hover:decoration-blue-500",
+        "text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] underline decoration-[var(--color-accent)]/40 hover:decoration-[var(--color-accent)] dark:decoration-[var(--color-dark-accent)]/40 dark:hover:decoration-[var(--color-dark-accent)]",
       secondary:
-        "text-gray-700 dark:text-zinc-300 underline decoration-gray-700/50 hover:decoration-gray-700 dark:decoration-zinc-300/70 dark:hover:decoration-zinc-300",
+        "text-[var(--color-text)] dark:text-[var(--color-dark-text)] underline decoration-[var(--color-text-secondary)]/40 hover:decoration-[var(--color-text)] dark:decoration-[var(--color-dark-text-secondary)]/40 dark:hover:decoration-[var(--color-dark-text)]",
     },
   },
   defaultVariants: {

@@ -16,9 +16,10 @@ import { ThemeProvider } from "./utils/theme-provider";
 
 export const links = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Outfit:wght@300;400;500;600;700&display=swap",
   },
 ];
 
@@ -35,7 +36,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body
         className={twMerge(
-          "overflow-x-hidden",
+          "overflow-x-hidden font-sans",
           openMenu ? "overflow-hidden max-h-screen" : "overflow-x-hidden"
         )}
       >

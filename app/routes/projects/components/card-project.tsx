@@ -1,8 +1,4 @@
-import { Github, Globe } from "lucide-react";
-import { Heading, TooltipTrigger } from "react-aria-components";
-import { Link } from "~/components/ui/Link";
-import { Tag, TagGroup } from "~/components/ui/TagGroup";
-import { Tooltip } from "~/components/ui/Tooltip";
+import { ArrowUpRight, Github } from "lucide-react";
 
 export default function CardProject({
   title,
@@ -10,39 +6,64 @@ export default function CardProject({
   deployLink,
   codeLink,
   tags,
+  index = 0,
 }: {
   title: string;
   content: string;
   deployLink: string;
   codeLink: string;
   tags: string[];
+  index?: number;
 }) {
   return (
-    <div className="space-y-2 border-[1.85px] dark:border-[#a9adc1] w-full sm:w-[280px] px-2 py-3 rounded-lg">
-      <div className="flex justify-between items-center">
-        <Heading className="font-bold text-xl">{title}</Heading>
-        <div className="flex gap-2 items-center">
-          <TooltipTrigger delay={0}>
-            <Link href={deployLink} target="__black">
-              <Globe className="h-5 w-5" />
-            </Link>
-            <Tooltip onOpenChange={function Ya() {}}>Web</Tooltip>
-          </TooltipTrigger>
-
-          <TooltipTrigger delay={0}>
-            <Link href={codeLink} target="__black">
-              <Github className="h-5 w-5" />{" "}
-            </Link>
-            <Tooltip onOpenChange={function Ya() {}}>Code</Tooltip>
-          </TooltipTrigger>
+    <article
+      className="group relative p-6 rounded-lg border border-[var(--color-border)] dark:border-[var(--color-dark-border)] bg-[var(--color-surface)]/50 dark:bg-[var(--color-dark-surface)]/50 transition-all duration-300 hover:border-[var(--color-border-strong)] dark:hover:border-[var(--color-dark-border-strong)] hover:shadow-sm"
+      style={{ animationDelay: `${index * 100}ms` }}
+    >
+      {/* Header */}
+      <div className="flex items-start justify-between mb-3">
+        <h3 className="font-serif text-xl">{title}</h3>
+        <div className="flex items-center gap-2">
+          <a
+            href={codeLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-1.5 rounded-full text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] hover:text-[var(--color-text)] dark:hover:text-[var(--color-dark-text)] hover:bg-[var(--color-border)] dark:hover:bg-[var(--color-dark-border)] transition-colors"
+            aria-label={`View ${title} source code`}
+          >
+            <Github className="w-4 h-4" />
+          </a>
+          <a
+            href={deployLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-1.5 rounded-full text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] hover:text-[var(--color-text)] dark:hover:text-[var(--color-dark-text)] hover:bg-[var(--color-border)] dark:hover:bg-[var(--color-dark-border)] transition-colors"
+            aria-label={`Visit ${title} website`}
+          >
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
         </div>
       </div>
-      <p className="text-[#535661] dark:text-[#a9adc1] ">{content}</p>
-      <TagGroup color="blue">
+
+      {/* Description */}
+      <p className="text-sm text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] leading-relaxed mb-4">
+        {content}
+      </p>
+
+      {/* Tags */}
+      <div className="flex flex-wrap gap-2">
         {tags.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
+          <span
+            key={tag}
+            className="text-xs px-2.5 py-1 rounded-full bg-[var(--color-border)] dark:bg-[var(--color-dark-border)] text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)]"
+          >
+            {tag}
+          </span>
         ))}
-      </TagGroup>
-    </div>
+      </div>
+
+      {/* Hover accent line */}
+      <div className="absolute bottom-0 left-6 right-6 h-px bg-[var(--color-accent)] dark:bg-[var(--color-dark-accent)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+    </article>
   );
 }

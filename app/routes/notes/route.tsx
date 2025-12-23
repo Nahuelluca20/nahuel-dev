@@ -5,7 +5,6 @@ import type { Route } from "../notes/+types/route";
 import { Tab, TabList, Tabs } from "~/components/ui/Tabs";
 import { Suspense } from "react";
 import ListSkeleton from "~/components/list-skeleton";
-import { Link as LinkUI } from "~/components/ui/Link";
 
 export async function loader({ context, request }: Route.LoaderArgs) {
   const url = new URL(request.url);
@@ -20,7 +19,7 @@ export async function loader({ context, request }: Route.LoaderArgs) {
 
 export const meta = ({ data }: Route.MetaArgs) => {
   return [
-    { title: "Notes" },
+    { title: "Notes - Nahuel Luca" },
     {
       name: "description",
       content: `${data?.topics.map((topic) => topic.title).join(", ")}`,
@@ -33,49 +32,63 @@ export default function Notes({ loaderData }: Route.ComponentProps) {
   let [_, setSearchParams] = useSearchParams();
 
   return (
-    <div className="lg:min-w-[800px] lg:max-w-[800px] mx-auto prose prose-md lg:prose-lg">
+    <section className="max-w-2xl mx-auto pb-16">
+      {/* Header */}
+      <div className="mb-8">
+        <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] mb-3">
+          Knowledge Base
+        </p>
+        <h1 className="text-3xl md:text-4xl font-serif mb-4">Notes</h1>
+        <p className="text-lg text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] leading-relaxed">
+          Quick references and learnings organized by topic.
+        </p>
+      </div>
+
+      {/* Topics Tabs */}
       <Tabs
         onSelectionChange={(key) => {
           setSearchParams({ topic: key.toString() });
         }}
+        className="mb-8"
       >
-        <TabList>
+        <TabList className="flex gap-2 flex-wrap">
           {topics.map((topic) => (
-            <Tab key={topic.id} id={topic.id}>
+            <Tab
+              key={topic.id}
+              id={topic.id}
+              className="px-4 py-2 text-sm font-medium rounded-full border border-[var(--color-border)] dark:border-[var(--color-dark-border)] cursor-pointer transition-all duration-200 hover:border-[var(--color-border-strong)] dark:hover:border-[var(--color-dark-border-strong)] data-[selected]:bg-[var(--color-text)] dark:data-[selected]:bg-[var(--color-dark-text)] data-[selected]:text-[var(--color-bg)] dark:data-[selected]:text-[var(--color-dark-bg)] data-[selected]:border-transparent"
+            >
               {topic.title}
             </Tab>
           ))}
         </TabList>
       </Tabs>
-      <section className="grid gap-2 w-full max-w-[700px] mx-auto">
-        <div className="grid ml-5 gap-2 mt-5">
-          {
-            <Suspense fallback={<ListSkeleton />}>
-              <Await resolve={notes}>
-                {(notes) => (
-                  <ul className="list-disc space-y-2">
-                    {notes?.map(
-                      (note: { id: string | null; title: string | null }) => (
-                        <li key={`post-${note.id}`}>
-                          <LinkUI>
-                            <Link
-                              prefetch="intent"
-                              className="dark:text-gray-200"
-                              to={`/notes/${note.id}`}
-                            >
-                              {note.title}
-                            </Link>
-                          </LinkUI>
-                        </li>
-                      )
-                    )}
-                  </ul>
+
+      {/* Notes List */}
+      <div className="space-y-1">
+        <Suspense fallback={<ListSkeleton />}>
+          <Await resolve={notes}>
+            {(notes) => (
+              <>
+                {notes?.map(
+                  (note: { id: string | null; title: string | null }) => (
+                    <Link
+                      key={`note-${note.id}`}
+                      prefetch="intent"
+                      to={`/notes/${note.id}`}
+                      className="group flex items-baseline justify-between py-4 border-b border-[var(--color-border)] dark:border-[var(--color-dark-border)] hover:border-[var(--color-border-strong)] dark:hover:border-[var(--color-dark-border-strong)] transition-colors"
+                    >
+                      <span className="font-medium group-hover:text-[var(--color-accent)] dark:group-hover:text-[var(--color-dark-accent)] transition-colors">
+                        {note.title}
+                      </span>
+                    </Link>
+                  )
                 )}
-              </Await>
-            </Suspense>
-          }
-        </div>
-      </section>
-    </div>
+              </>
+            )}
+          </Await>
+        </Suspense>
+      </div>
+    </section>
   );
 }

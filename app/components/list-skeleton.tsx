@@ -1,16 +1,19 @@
 export default function ListSkeleton() {
-  const items = Array.from({ length: 8 }, (_, index) => index);
+  const items = Array.from({ length: 6 }, (_, index) => index);
   return (
-    <ul className="list-disc space-y-2 w-full">
-      {items.map((item, index) => (
-        <li key={index} className="w-[240px] md:w-[300px] h-[24px]">
-          <div className="animate-pulse flex space-x-4 w-full">
-            <div className="w-full">
-              <div className="h-2 bg-slate-400 py-1 w-full rounded-md col-span-2"></div>
-            </div>
-          </div>
-        </li>
+    <div className="space-y-1">
+      {items.map((_, index) => (
+        <div
+          key={index}
+          className="flex items-center justify-between py-4 border-b border-[var(--color-border)] dark:border-[var(--color-dark-border)]"
+        >
+          <div
+            className="h-5 bg-[var(--color-border)] dark:bg-[var(--color-dark-border)] rounded animate-pulse"
+            style={{ width: `${Math.random() * 40 + 40}%` }}
+          />
+          <div className="h-4 w-16 bg-[var(--color-border)] dark:bg-[var(--color-dark-border)] rounded animate-pulse" />
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }

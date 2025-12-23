@@ -34,7 +34,7 @@ export function Tabs(props: TabsProps) {
 }
 
 const tabListStyles = tv({
-  base: "flex gap-1",
+  base: "flex gap-2 flex-wrap",
   variants: {
     orientation: {
       horizontal: "flex-row",
@@ -56,15 +56,15 @@ export function TabList<T extends object>(props: TabListProps<T>) {
 
 const tabProps = tv({
   extend: focusRing,
-  base: "flex items-center cursor-default rounded-full px-4 py-1.5 text-sm font-medium transition forced-color-adjust-none",
+  base: "flex items-center cursor-default rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 forced-color-adjust-none border",
   variants: {
     isSelected: {
       false:
-        "text-gray-600 dark:text-zinc-300 hover:text-gray-700 pressed:text-gray-700 dark:hover:text-zinc-200 dark:pressed:text-zinc-200 hover:bg-gray-200 dark:hover:bg-zinc-800 pressed:bg-gray-200 dark:pressed:bg-zinc-800",
-      true: "text-white dark:text-black forced-colors:text-[HighlightText] bg-gray-800 dark:bg-zinc-200 forced-colors:bg-[Highlight]",
+        "text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] border-[var(--color-border)] dark:border-[var(--color-dark-border)] hover:border-[var(--color-border-strong)] dark:hover:border-[var(--color-dark-border-strong)] hover:text-[var(--color-text)] dark:hover:text-[var(--color-dark-text)]",
+      true: "text-[var(--color-bg)] dark:text-[var(--color-dark-bg)] bg-[var(--color-text)] dark:bg-[var(--color-dark-text)] border-transparent forced-colors:text-[HighlightText] forced-colors:bg-[Highlight]",
     },
     isDisabled: {
-      true: "text-gray-200 dark:text-zinc-600 forced-colors:text-[GrayText] selected:text-gray-300 dark:selected:text-zinc-500 forced-colors:selected:text-[HighlightText] selected:bg-gray-200 dark:selected:bg-zinc-600 forced-colors:selected:bg-[GrayText]",
+      true: "opacity-40 cursor-not-allowed",
     },
   },
 });
@@ -82,7 +82,7 @@ export function Tab(props: TabProps) {
 
 const tabPanelStyles = tv({
   extend: focusRing,
-  base: "flex-1 p-4 text-sm text-gray-900 dark:text-zinc-100",
+  base: "flex-1 p-4 text-sm text-[var(--color-text)] dark:text-[var(--color-dark-text)]",
 });
 
 export function TabPanel(props: TabPanelProps) {
