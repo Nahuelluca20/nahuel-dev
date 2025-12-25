@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 
 import Header from "./components/header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./app.css";
 import type { Route } from "./+types/root";
 import {
@@ -18,6 +18,11 @@ export const links = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
   {
+    rel: "preload",
+    as: "style",
+    href: "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Outfit:wght@300;400;500;600;700&display=swap",
+  },
+  {
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Outfit:wght@300;400;500;600;700&display=swap",
   },
@@ -25,6 +30,16 @@ export const links = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const [openMenu, setOpenMenu] = useState(false);
+
+  useEffect(() => {
+    if (document.fonts) {
+      document.fonts.ready.then(() => {
+        document.documentElement.classList.add("fonts-loaded");
+      });
+    } else {
+      document.documentElement.classList.add("fonts-loaded");
+    }
+  }, []);
 
   return (
     <html lang="en">
