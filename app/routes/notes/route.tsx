@@ -19,7 +19,7 @@ export async function loader({ context, request }: Route.LoaderArgs) {
 
 export const meta = ({ data }: Route.MetaArgs) => {
   return [
-    { title: "Notes - Nahuel Luca" },
+    { title: "Notes - Loadertsx" },
     {
       name: "description",
       content: `${data?.topics.map((topic) => topic.title).join(", ")}`,
