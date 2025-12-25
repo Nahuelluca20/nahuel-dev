@@ -35,6 +35,15 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Prevent font flash - hide content until fonts load */
+html:not(.fonts-loaded) body {
+  opacity: 0;
+}
+
+html.fonts-loaded body {
+  opacity: 1;
+}
+
 html.dark {
   color-scheme: dark;
 }
